@@ -1,0 +1,70 @@
+{
+  "typescript.tsdk": "./node_modules/typescript/lib",
+  "npm.packageManager": "pnpm",
+  "editor.tabSize": 2,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "files.eol": "\n",
+  "stylelint.enable": true,
+  "stylelint.config": null,
+  // 关闭编辑器内置样式检查（避免与stylelint冲突）
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+  // 配置stylelint检查的文件类型范围
+  "stylelint.validate": ["css", "less", "postcss", "scss", "sass", "vue"],
+  "stylelint.packageManager": "pnpm",
+  "path-intellisense.mappings": {
+    "/@/": "${workspaceRoot}/src"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true, // 开启自动修复
+    "source.fixAll.eslint": true,
+    "source.fixAll.stylelint": true
+  },
+  "[vue]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll": true, // 开启自动修复
+      "source.fixAll.eslint": true,
+      "source.fixAll.stylelint": true
+    }
+  },
+  "vue.codeActions.enabled": false,
+  "fileheader.configObj": {
+    "createFileTime": true,
+    "autoAdd": true, // 自动添加
+    "prohibitAutoAdd": ["json", "md", "html"],
+    "folderBlacklist": ["node_modules"], //文件夹禁止自动添加头部注释
+    "dateFormat": "YYYY-MM-DD", // 定义日期格式
+    "CheckFileChange": true, // 文件改动后自动增加/更新文件顶部的注释
+    "createHeader": true // 自动增加文件顶部注释（也可以使用快捷键：ctrl + win + i）
+  },
+  "fileheader.customMade": {
+    //此为头部注释
+    "Description": "", // 文件描述
+    "Author": "git config user.name && git config user.email", // 读取git用户名和邮箱
+    "Date": "Do not edit", // 文件创建时间
+    "LastEditors": "git config user.name && git config user.email",
+    "LastEditTime": "Do not edit" // 文件最后编辑时间
+  }
+}
