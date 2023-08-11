@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-defineOptions({ name: 'AboutPage' })
+defineOptions({ name: 'ArchivePage' })
 </script>
 
 <template>
