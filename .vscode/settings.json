@@ -66,5 +66,8 @@
     "Date": "Do not edit", // 文件创建时间
     "LastEditors": "git config user.name && git config user.email",
     "LastEditTime": "Do not edit" // 文件最后编辑时间
-  }
+  },
+  "i18n-ally.localesPaths": [
+    "src/i18n"
+  ]
 }
