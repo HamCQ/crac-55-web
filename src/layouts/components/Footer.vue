@@ -24,7 +24,7 @@ defineOptions({ name: 'LayoutFooter' })
         />
       </a>
 
-      © <a href="http://www.crac.org.cn/" target="_blank">2023 CRAC </a>
+      <span> © <a href="http://www.crac.org.cn/" target="_blank">2023 CRAC </a> </span>
 
       <p
         class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4"

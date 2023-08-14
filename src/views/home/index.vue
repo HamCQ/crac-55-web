@@ -2,21 +2,24 @@
  * @Description: 首页
  * @Author: BG7ZAG bg7zag@qq.com
  * @Date: 2023-08-11
- * @LastEditors: BG7ZAG bg7zag@qq.com
- * @LastEditTime: 2023-08-11
+ * @LastEditors: BG7ZAG bg7zag@gmail.com
+ * @LastEditTime: 2023-08-14
 -->
 <script lang="ts" setup>
-import HelloWorld from './components/HelloWorld.vue'
+import { useProvideHomeStore } from '@/store/home'
+
+import BnCRA from './components/BnCRA.vue';
+import Search from './components/Search.vue'
 
 defineOptions({ name: 'HomePage' })
-const VITE_APP_TITLE = import.meta.env.VITE_APP_TITLE
+
+useProvideHomeStore()
 </script>
 
 <template>
   <div class="home">
-    <HelloWorld msg="hello" />
-
-    <div>{{ VITE_APP_TITLE }}</div>
+    <Search />
+    <BnCRA />
   </div>
 </template>
 

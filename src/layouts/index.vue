@@ -2,15 +2,21 @@
  * @Description: 布局
  * @Author: BG7ZAG bg7zag@qq.com
  * @Date: 2023-08-11
- * @LastEditors: BG7ZAG bg7zag@qq.com
- * @LastEditTime: 2023-08-11
+ * @LastEditors: BG7ZAG bg7zag@gmail.com
+ * @LastEditTime: 2023-08-14
 -->
 <script lang="ts" setup>
+import { useMediaQuery } from '@vueuse/core'
+import { ElBacktop } from 'element-plus'
 import { RouterView } from 'vue-router'
-import LayoutHeader from './components/Header.vue'
-import LayoutFooter from './components/Footer.vue'
 
+import LayoutFooter from './components/Footer.vue'
+import LayoutHeader from './components/Header.vue'
+
+// eslint-disable-next-line vue/multi-word-component-names
 defineOptions({ name: 'Layout' })
+
+const isLargeScreen = useMediaQuery('(min-width: 768px)')
 </script>
 
 <template>
@@ -27,6 +33,8 @@ defineOptions({ name: 'Layout' })
 
     <!-- 底部 -->
     <LayoutFooter />
+
+    <ElBacktop :right="isLargeScreen ? 100 : 10" :bottom="isLargeScreen ? 100 : 10" />
   </div>
 </template>
 

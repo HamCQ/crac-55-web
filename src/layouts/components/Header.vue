@@ -1,35 +1,74 @@
+<!--
+ * @Description: 头部
+ * @Author: BG7ZAG bg7zag@gmail.com
+ * @Date: 2023-08-11
+ * @LastEditors: BG7ZAG bg7zag@gmail.com
+ * @LastEditTime: 2023-08-14
+-->
 <script lang="ts" setup>
-import { useRouter } from 'vue-router';
+import { ChineseOne, English,  MenuUnfoldOne } from '@icon-park/vue-next'
+import { ElDrawer, ElIcon, ElTooltip } from 'element-plus'
+
+import { LANGUAGE_TYPE, useGlobalState } from '@/store/global'
+
+import HeaderNav from './HeaderNav.vue'
 
 defineOptions({ name: 'LayoutHeader' })
-const router = useRouter()
-const goto = (path: string)=>{
-  router.push(path)
+// 站点标题
+const VITE_APP_TITLE = import.meta.env.VITE_APP_TITLE
+
+const { language, changeLanguage } = useGlobalState()
+
+
+const drawer = ref(false)
+/**
+ * 关闭遮罩层
+ */
+const onCloseDrawer = ()=>{
+  drawer.value = false
 }
 </script>
 
 <template>
   <header class="text-gray-600 body-font layout-header">
-    <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-      <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-        <span class="mr-5 hover:text-gray-900 cursor-pointer" @click="goto('/')">首页</span>
-        <a
-          href="http://www.crac.org.cn/News/Detail?ID=e3af63b9066b409d8ba10858e61f5e75"
-          target="_blank"
-          class="mr-5 hover:text-gray-900"
-          >活动说明</a
-        >
-        <span class="mr-5 hover:text-gray-900 cursor-pointer" @click="goto('/onlineStatus')">总部电台上线状态</span>
-        <a href="http://www.crac.org.cn/" target="_blank" class="mr-5 hover:text-gray-900"
-          >CRAC 站点</a
-        >
-        <span class="mr-5 hover:text-gray-900 cursor-pointer" @click="goto('/archive')">历年活动</span>
-      </nav>
+    <ElIcon class="md:hidden layout-header-menu" :size="20">
+      <MenuUnfoldOne theme="outline" size="24" fill="#333" @click="drawer = true" />
+    </ElIcon>
 
-      <a href="https://api.hamcq.cn/partner/crac/2023/en" class="mr-5 hover:text-gray-900"
-        >English</a
+    <h1 class="layout-header-title" :size="20">
+      {{ VITE_APP_TITLE }}
+    </h1>
+
+    <div
+      class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center layout-header-block"
+    >
+      <HeaderNav />
+
+      <ElTooltip
+        class="box-item"
+        :content="language === LANGUAGE_TYPE.CHINESE ? 'English' : '中文'"
+        placement="bottom"
       >
+        <English
+          v-if="language === LANGUAGE_TYPE.CHINESE"
+          class="layout-language"
+          theme="outline"
+          size="24"
+          @click="changeLanguage(LANGUAGE_TYPE.ENGLISH)"
+        />
+        <ChineseOne
+          v-else
+          class="layout-language"
+          theme="outline"
+          size="24"
+          @click="changeLanguage(LANGUAGE_TYPE.CHINESE)"
+        />
+      </ElTooltip>
     </div>
+
+    <ElDrawer v-model="drawer" direction="ltr" :with-header="false" size="80%">
+      <HeaderNav @close="onCloseDrawer"/>
+    </ElDrawer>
   </header>
 </template>
 
@@ -38,7 +77,54 @@ const goto = (path: string)=>{
   position: sticky;
   top: 0;
   z-index: 1;
+  display: flex;
   flex-shrink: 0;
+  justify-content: flex-end;
   background-color: #fff;
+
+  .layout-header-menu {
+    color: var(--el-color-primary);
+  }
+
+  .layout-header-title {
+    display: none;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .layout-language {
+    cursor: pointer;
+
+    &:hover {
+      color: var(--el-color-primary);
+    }
+  }
+}
+
+@media screen and (width <= 768px) {
+  .layout-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+    padding: 0 10px;
+    border-bottom: 1px solid var(--el-border-color);
+
+    
+    .layout-header-block {
+      width: 24px;
+      padding: 0;
+
+      .layout-header-nav {
+        display: none;
+      }
+    }
+
+    .layout-header-title {
+      display: flex;
+    }
+  }
 }
 </style>
