@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import BnCRAIcon from './BnCRAIcon.vue'
+
 defineOptions({ name: 'BnCRATable' })
 </script>
 
@@ -8,7 +10,7 @@ defineOptions({ name: 'BnCRATable' })
       <h5 class="flex justify-between text-gray-900 text-xl leading-tight font-medium mb-2">
         <span>BnCRA</span>
 
-        <span class="text-sm text-gray-500"> 0 分 </span>
+        <span class="text-sm text-gray-500"> 0 {{$t('home.points')}} </span>
       </h5>
       <div class="bncra-table-scroll">
         <table class="text-center">
@@ -31,7 +33,9 @@ defineOptions({ name: 'BnCRATable' })
             <tr class="bg-white border-b">
               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">PHONE</td>
               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"></td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"></td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+               <BnCRAIcon />
+              </td>
               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"></td>
               <td
                 class="px-6 py-4 whitespace-nowrap text-sm font-medium bg-gray-50 rounded-sm"
@@ -77,9 +81,9 @@ defineOptions({ name: 'BnCRATable' })
 </template>
 
 <style lang="scss" scoped>
-@media screen and (width <= 768px) {
+@media screen and (width <= 820px) {
   .bncra-table {
-      max-width: calc(100vw - 1.5rem);
+    max-width: calc(100vw - 1.5rem);
 
     .bncra-table-block {
       max-width: 100%;

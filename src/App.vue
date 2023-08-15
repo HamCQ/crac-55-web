@@ -6,14 +6,17 @@
  * @LastEditTime: 2023-08-11
 -->
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
 import { RouterView } from 'vue-router'
 
-// import { useI18n } from 'vue-i18n'
-// const { locale } = useI18n()
-// // 切换中文
-// function  changeZh(){   locale.value = 'zh';   };
-// // 切换英文
-// function  changeEn(){   locale.value = 'en';   };
+import { useGlobalState } from './store/global'
+
+// 切换语言
+const { locale } = useI18n()
+const { language } = useGlobalState()
+watch(language, (val) => {
+  locale.value = val
+})
 </script>
 
 <template>

@@ -3,14 +3,17 @@
  * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-14
  * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-14
+ * @LastEditTime: 2023-08-15
 -->
 <script lang="ts" setup>
 import { ElOption, ElSelect } from 'element-plus'
 
-import BnCRATableVue from './BnCRATable.vue'
+import BnCRATableVue from '@/components/BnCRATable/BnCRATable.vue'
+import { useHomeStore } from '@/store/home';
 
 defineOptions({ name: 'BnCRA' })
+
+const { searchData } = useHomeStore()!
 
 const select = ref('B0CRA')
 const options = reactive([
@@ -103,7 +106,7 @@ const options = reactive([
   }
 }
 
-@media screen and (width <= 768px) {
+@media screen and (width <= 820px) {
   .bn-cra {
     max-width: 100vw;
     overflow: hidden;

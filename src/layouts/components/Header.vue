@@ -3,7 +3,7 @@
  * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-11
  * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-14
+ * @LastEditTime: 2023-08-15
 -->
 <script lang="ts" setup>
 import { ChineseOne, English,  MenuUnfoldOne } from '@icon-park/vue-next'
@@ -14,11 +14,8 @@ import { LANGUAGE_TYPE, useGlobalState } from '@/store/global'
 import HeaderNav from './HeaderNav.vue'
 
 defineOptions({ name: 'LayoutHeader' })
-// 站点标题
-const VITE_APP_TITLE = import.meta.env.VITE_APP_TITLE
 
 const { language, changeLanguage } = useGlobalState()
-
 
 const drawer = ref(false)
 /**
@@ -31,12 +28,12 @@ const onCloseDrawer = ()=>{
 
 <template>
   <header class="text-gray-600 body-font layout-header">
-    <ElIcon class="md:hidden layout-header-menu" :size="20">
+    <ElIcon class="layout-header-menu" :size="20">
       <MenuUnfoldOne theme="outline" size="24" fill="#333" @click="drawer = true" />
     </ElIcon>
 
     <h1 class="layout-header-title" :size="20">
-      {{ VITE_APP_TITLE }}
+      {{ $t('home.title') }}
     </h1>
 
     <div
@@ -66,7 +63,7 @@ const onCloseDrawer = ()=>{
       </ElTooltip>
     </div>
 
-    <ElDrawer v-model="drawer" direction="ltr" :with-header="false" size="80%">
+    <ElDrawer v-model="drawer" direction="ltr" :with-header="false" size="300px">
       <HeaderNav @close="onCloseDrawer"/>
     </ElDrawer>
   </header>
@@ -83,6 +80,7 @@ const onCloseDrawer = ()=>{
   background-color: #fff;
 
   .layout-header-menu {
+    display: none;
     color: var(--el-color-primary);
   }
 
@@ -103,7 +101,7 @@ const onCloseDrawer = ()=>{
   }
 }
 
-@media screen and (width <= 768px) {
+@media screen and (width <= 820px) {
   .layout-header {
     display: flex;
     align-items: center;
@@ -120,6 +118,10 @@ const onCloseDrawer = ()=>{
       .layout-header-nav {
         display: none;
       }
+    }
+
+    .layout-header-menu {
+      display: block;
     }
 
     .layout-header-title {

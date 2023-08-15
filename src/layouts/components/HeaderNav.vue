@@ -3,11 +3,16 @@
  * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-14
  * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-14
+ * @LastEditTime: 2023-08-15
 -->
 <script lang="ts" setup>
+import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
+const { t } = useI18n()
+
+
 defineOptions({ name: 'HeaderNav' })
+
 
 const emits = defineEmits<{
   (event: 'close'): void
@@ -30,17 +35,17 @@ const goto = (path: string) => {
 
 <template>
   <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center layout-header-nav">
-    <span class="mr-5 hover:text-gray-900 cursor-pointer" @click="goto('/')">首页</span>
+    <span class="mr-5 hover:text-gray-900 cursor-pointer" @click="goto('/')">{{t("layout.header.home")}}</span>
     <span
       @click="goto('http://www.crac.org.cn/News/Detail?ID=e3af63b9066b409d8ba10858e61f5e75')"
       class="mr-5 hover:text-gray-900"
-      >活动说明</span
+      >{{t("layout.header.about")}}</span
     >
     <span class="mr-5 hover:text-gray-900 cursor-pointer" @click="goto('/onlineStatus')"
-      >总部电台上线状态</span
+      >{{t("layout.header.onTheAir")}}</span
     >
-    <span @click="goto('http://www.crac.org.cn/')" class="mr-5 hover:text-gray-900">CRAC 站点</span>
-    <span class="mr-5 hover:text-gray-900 cursor-pointer" @click="goto('/archive')">历年活动</span>
+    <span @click="goto('http://www.crac.org.cn/')" class="mr-5 hover:text-gray-900">{{t("layout.header.cracSite")}}</span>
+    <span class="mr-5 hover:text-gray-900 cursor-pointer" @click="goto('/archive')">{{t("layout.header.archive")}}</span>
   </nav>
 </template>
 
@@ -55,7 +60,7 @@ const goto = (path: string) => {
   }
 }
 
-@media screen and (width <= 768px) {
+@media screen and (width <= 820px) {
   .layout-header-nav {
     flex-direction: column;
     padding: 32px;
