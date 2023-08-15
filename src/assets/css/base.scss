@@ -4,9 +4,8 @@
 @tailwind utilities;
 
 :root {
-  --theme-text-color: #fff;
-  --theme-bg-color: #fff;
-  --theme-border-color: #fff;
+  // 覆盖element plus主题
+  --el-color-primary: rgb(79 70 229 / 100%);
 }
 
 *,

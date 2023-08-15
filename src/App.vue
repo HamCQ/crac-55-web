@@ -1,16 +1,12 @@
 <!--
- * @Description: 
+ * @Description: 入口页面
  * @Author: BG7ZAG bg7zag@qq.com
  * @Date: 2023-08-11
  * @LastEditors: BG7ZAG bg7zag@qq.com
  * @LastEditTime: 2023-08-11
 -->
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-
-import { useGlobalState } from './store/global'
-
-const state = useGlobalState()
+import { RouterView } from 'vue-router'
 
 // import { useI18n } from 'vue-i18n'
 // const { locale } = useI18n()
@@ -21,17 +17,6 @@ const state = useGlobalState()
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <nav>
-        <RouterLink to="/">{{ $t('home') }} {{ state.count }}</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
   <RouterView />
 </template>
 
