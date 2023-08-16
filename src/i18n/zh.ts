@@ -1,9 +1,9 @@
 /*
- * @Description:
- * @Author: BG7ZAG bg7zag@qq.com
+ * @Description: 
+ * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-11
  * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-15
+ * @LastEditTime: 2023-08-16
  */
 
 export default {
@@ -36,6 +36,9 @@ export default {
       },
       download: '点此下载奖状'
     },
-    points: '分'
+    points: '分',
+    bncra: {
+      all: '全部'
+    }
   }
 }

@@ -3,7 +3,7 @@
  * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-15
  * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-15
+ * @LastEditTime: 2023-08-16
 -->
 <script lang="ts" setup>
 import '@lottiefiles/lottie-player'
@@ -22,12 +22,14 @@ const awardMap = computed<Record<string, string> >(() =>({
   Silver: t('home.award.awardString.Silver'),
   Bronze: t('home.award.awardString.Bronze')
 }))
+
+const VITE_LOTTIE = import.meta.env.VITE_LOTTIE
 </script>
 
 <template>
   <p class="text-center py-4 mx-auto leading-relaxed text-base text-indigo-900 home-award">
     <lottie-player
-      :src="`https://oss.hamcq.cn/static/lottie/icon/${
+      :src="`${VITE_LOTTIE}/${
         searchData?.award_info?.award_string?.toLocaleLowerCase() ?? 'gold'
       }_award.json`"
       background="transparent"

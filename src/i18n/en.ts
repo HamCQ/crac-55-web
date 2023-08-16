@@ -3,7 +3,7 @@
  * @Author: BG7ZAG bg7zag@qq.com
  * @Date: 2023-08-11
  * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-15
+ * @LastEditTime: 2023-08-16
  */
 export default {
   layout: {
@@ -34,6 +34,9 @@ export default {
       },
       download: 'Download the certificate of merit'
     },
-    points: 'Points'
+    points: 'Points',
+    bncra: {
+      all: 'All'
+    }
   }
 }
