@@ -2,8 +2,8 @@
  * @Description: 
  * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-11
- * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-16
+ * @LastEditors: zyg0121 zhouyiguo2012@qq.com
+ * @LastEditTime: 2023-08-17
  */
 
 export default {
@@ -34,7 +34,10 @@ export default {
         AS: '亚洲 电台',
         OA: '亚洲以外 电台',
       },
-      download: '点此下载奖状'
+      download: '点此下载奖状',
+      close: '关闭',
+      ImgSave: '保存原图',
+      Apply: '申请纸质证书',
     },
     points: '分',
     bncra: {

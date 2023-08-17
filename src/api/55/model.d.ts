@@ -2,8 +2,8 @@
  * @Description:
  * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-14
- * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-15
+ * @LastEditors: zyg0121 zhouyiguo2012@qq.com
+ * @LastEditTime: 2023-08-17
  */
 declare namespace Search55V1Types {
   export type IRequest = {
@@ -38,5 +38,26 @@ declare namespace Search55V1Types {
     [x: 'cw' | 'digi' | 'phone']: MODEL
     /** 得分 */
     score: number
+  }
+}
+
+// 奖项相关信息
+declare namespace Award55V1Types {
+  export type IRequest = {
+    /** 呼号 */
+    callsign: string
+    /** 年份 */
+    year: number
+  }
+
+  export type IResponse = {
+      award_string: string
+      award_type: number
+      continent: string
+      bncra_num: number
+      callsign: string
+      img_url: string
+      img_url_origin: string
+      combination: number
   }
 }
