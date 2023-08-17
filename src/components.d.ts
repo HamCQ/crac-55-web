@@ -9,8 +9,6 @@ declare module 'vue' {
   export interface GlobalComponents {
     BnCRAIcon: typeof import('./components/BnCRATable/BnCRAIcon.vue')['default']
     BnCRATable: typeof import('./components/BnCRATable/BnCRATable.vue')['default']
-    Icon: typeof import('./components/BnCRATable/Icon.vue')['default']
-    IEpMenu: typeof import('~icons/ep/menu')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }
