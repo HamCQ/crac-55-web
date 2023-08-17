@@ -110,7 +110,8 @@ const bands = ['160M', '80M', '40M', '30M', '20M', '17M', '15M', '12M', '10M', '
   justify-content: center;
 }
 
-@media screen and (width <= 820px) {
+/* stylelint-disable-next-line media-feature-range-notation */
+@media screen and (max-width: 992px) {
   .bncra-table {
     max-width: calc(100vw - 1.5rem);
 

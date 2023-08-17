@@ -6,7 +6,7 @@
  * @LastEditTime: 2023-08-15
 -->
 <script lang="ts" setup>
-import { ChineseOne, English,  MenuUnfoldOne } from '@icon-park/vue-next'
+import { ChineseOne, English, MenuUnfoldOne } from '@icon-park/vue-next'
 import { ElDrawer, ElIcon, ElTooltip } from 'element-plus'
 
 import { LANGUAGE_TYPE, useGlobalState } from '@/store/global'
@@ -21,7 +21,7 @@ const drawer = ref(false)
 /**
  * 关闭遮罩层
  */
-const onCloseDrawer = ()=>{
+const onCloseDrawer = () => {
   drawer.value = false
 }
 </script>
@@ -64,7 +64,7 @@ const onCloseDrawer = ()=>{
     </div>
 
     <ElDrawer v-model="drawer" direction="ltr" :with-header="false" size="300px">
-      <HeaderNav @close="onCloseDrawer"/>
+      <HeaderNav @close="onCloseDrawer" />
     </ElDrawer>
   </header>
 </template>
@@ -101,7 +101,8 @@ const onCloseDrawer = ()=>{
   }
 }
 
-@media screen and (width <= 820px) {
+/* stylelint-disable-next-line media-feature-range-notation */
+@media screen and (max-width: 992px) {
   .layout-header {
     display: flex;
     align-items: center;
@@ -110,7 +111,6 @@ const onCloseDrawer = ()=>{
     padding: 0 10px;
     border-bottom: 1px solid var(--el-border-color);
 
-    
     .layout-header-block {
       width: 24px;
       padding: 0;

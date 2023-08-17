@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "vite --mode development",
+    "dev": "vite --mode development --host",
     "build:dev": "run-p type-check && vite build --base=/ --mode development",
     "build:test": "run-p type-check  && vite build --base=/ --mode testing",
     "build:prod": "run-p type-check  && vite build --base=/ --mode production",

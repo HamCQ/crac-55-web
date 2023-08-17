@@ -2,8 +2,8 @@
  * @Description: 
  * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-14
- * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-15
+ * @LastEditors: BG7ZAG bg7zag@qq.com
+ * @LastEditTime: 2023-08-17
 -->
 <script lang="ts" setup>
 import { useHomeStore } from '@/store/home'
@@ -65,7 +65,8 @@ const onSearch = () => {
 </template>
 
 <style lang="scss" scoped>
-@media screen and (width <= 820px) {
+/* stylelint-disable-next-line media-feature-range-notation */
+@media screen and (max-width: 992px) {
   .home-search {
     .home-search-block {
       width: 100%;
