@@ -2,8 +2,8 @@
  * @Description: 布局
  * @Author: BG7ZAG bg7zag@qq.com
  * @Date: 2023-08-11
- * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-15
+ * @LastEditors: BG7ZAG bg7zag@qq.com
+ * @LastEditTime: 2023-08-17
 -->
 <script lang="ts" setup>
 import { useMediaQuery } from '@vueuse/core'
@@ -16,7 +16,7 @@ import LayoutHeader from './components/Header.vue'
 // eslint-disable-next-line vue/multi-word-component-names
 defineOptions({ name: 'Layout' })
 
-const isLargeScreen = useMediaQuery('(min-width: 820px)')
+const isLargeScreen = useMediaQuery('(min-width: 992px)')
 </script>
 
 <template>
@@ -25,7 +25,9 @@ const isLargeScreen = useMediaQuery('(min-width: 820px)')
     <LayoutHeader />
 
     <!-- 页面渲染 -->
-    <main class="flex flex-1 text-gray-600 body-font container px-5 mt-10 mb-10 mx-auto layout-main">
+    <main
+      class="flex flex-1 text-gray-600 body-font container px-5 mt-10 mb-10 mx-auto layout-main"
+    >
       <RouterView v-slot="{ Component, route }">
         <component :is="Component" :key="route.name" />
       </RouterView>
@@ -51,7 +53,8 @@ const isLargeScreen = useMediaQuery('(min-width: 820px)')
   }
 }
 
-@media screen and (width <= 820px) {
+/* stylelint-disable-next-line media-feature-range-notation */
+@media screen and (max-width: 992px) {
   .layout {
     .layout-main {
       padding-right: 12px;

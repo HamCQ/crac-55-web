@@ -2,8 +2,8 @@
  * @Description: BnCRA
  * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-14
- * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-16
+ * @LastEditors: BG7ZAG bg7zag@qq.com
+ * @LastEditTime: 2023-08-17
 -->
 <script lang="ts" setup>
 import { ElOption, ElSelect } from 'element-plus'
@@ -137,7 +137,8 @@ const showList = computed(() => {
   }
 }
 
-@media screen and (width <= 820px) {
+/* stylelint-disable-next-line media-feature-range-notation */
+@media screen and (max-width: 992px) {
   .bn-cra {
     max-width: 100vw;
     overflow: hidden;

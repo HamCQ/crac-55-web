@@ -34,7 +34,7 @@ const [useProvideHomeStore, useHomeStore] = createInjectionState(() => {
 
     const res = await search(searchQuery)
 
-    searchData.value = res.data ?? {}
+    searchData.value = res ?? {}
   }
 
   if (searchQuery.callsign) {
