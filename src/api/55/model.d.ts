@@ -51,7 +51,6 @@ declare namespace Award55V1Types {
   }
 
   export type IResponse = {
-    award_info: {
       award_string: string
       award_type: number
       continent: string
@@ -60,6 +59,5 @@ declare namespace Award55V1Types {
       img_url: string
       img_url_origin: string
       combination: number
-    }
   }
 }

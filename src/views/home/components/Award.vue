@@ -89,17 +89,18 @@ onBeforeUnmount(() => {
       v-model="awardDialogVisible"
       :width="windowWidth < 992 ? '80%' : '40%'" center>
       <!-- <span>{{ awardData.img_url }}</span> -->
-      <el-image :src=awardData.img_url fit="contain" />
+      <el-image v-if="awardData?.img_url" :src="awardData.img_url" fit="contain" />
+
       <section class="text-gray-600 body-font">
         <div class="container px-5 py-8 mx-auto">
             <div class="flex flex-wrap -m-4 text-center">
             <div class="p-4 sm:w-1/2 w-1/2">
-                <h2 class="title-font font-medium text-3xl text-gray-900">{{ awardData.combination }}</h2>
+              <h2 class="title-font font-medium text-3xl text-gray-900" v-if="awardData?.combination">{{ awardData.combination }}</h2>
                 <p class="leading-relaxed">组合数</p>
             </div>
             <div class="p-4 sm:w-1/2 w-1/2">
-                <h2 class="title-font font-medium text-3xl text-gray-900">{{ awardData.bncra_num }}</h2>
-                <p class="leading-relaxed">BnCRA</p>
+              <h2 class="title-font font-medium text-3xl text-gray-900" v-if="awardData?.bncra_num">{{ awardData.bncra_num }}</h2>
+              <p class="leading-relaxed">BnCRA</p>
             </div>
         </div>
         </div>
@@ -111,7 +112,7 @@ onBeforeUnmount(() => {
               <button
             class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
           >
-          <a :href="awardData.img_url_origin" target="_blank">{{ $t('home.award.ImgSave') }}</a>
+          <a :href="awardData?.img_url_origin" target="_blank" v-if="awardData?.img_url_origin">{{ $t('home.award.ImgSave') }}</a>
           </button>
             </div>
             <div class="p-4 sm:w-1/2 w-1/2">
