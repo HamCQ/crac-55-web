@@ -47,7 +47,8 @@
       "source.fixAll": true, // 开启自动修复
       "source.fixAll.eslint": true,
       "source.fixAll.stylelint": true
-    }
+    },
+    "editor.defaultFormatter": "Vue.volar"
   },
   "vue.codeActions.enabled": false,
   "fileheader.configObj": {

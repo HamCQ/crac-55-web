@@ -1,3 +1,10 @@
+/*
+ * @Description: 
+ * @Author: zyg0121 zhouyiguo2012@qq.com
+ * @Date: 2023-08-17
+ * @LastEditors: zyg0121 zhouyiguo2012@qq.com
+ * @LastEditTime: 2023-08-17
+ */
 import { useStorage } from '@vueuse/core'
 import { createRouter, createWebHistory } from 'vue-router'
 
@@ -28,6 +35,12 @@ const router = createRouter({
           name: 'OnlineStatus',
           component: () => import('../views/onlineStatus/index.vue'),
           meta: { title: '总部电台上线状态', titleEn: 'On the Air' }
+        },
+        {
+          path: 'award',
+          name: 'AwardPage',
+          component: () => import('../views/award/index.vue'),
+          meta: { title: '申请奖状', titleEn: 'Apply Paper Award' }
         },
         // 将匹配所有内容并将其放在 `$route.params.pathMatch` 下
         {
