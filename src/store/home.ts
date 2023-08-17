@@ -3,22 +3,25 @@
  * @Author: BG7ZAG bg7zag@qq.com
  * @Date: 2023-08-11
  * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-14
+ * @LastEditTime: 2023-08-16
  */
 import { createInjectionState } from '@vueuse/shared'
 import { ref } from 'vue'
+import { useRoute } from 'vue-router'
 
 import { search } from '@/api/v1/55'
 
 const [useProvideHomeStore, useHomeStore] = createInjectionState(() => {
+  const route = useRoute()
+  
   // 呼号
   const searchQuery = reactive<Search55V1Types.IRequest>({
-    callsign: '',
-    year: new Date().getFullYear(),
+    callsign:  route?.query?.callsign ??'',
+    year: new Date().getFullYear()
   })
 
   // 搜索结果
-  const searchData = ref<Search55V1Types.IResponse>([])
+  const searchData = ref<Search55V1Types.IResponse>({} as Search55V1Types.IResponse)
 
   /**
    * 搜索
@@ -30,11 +33,12 @@ const [useProvideHomeStore, useHomeStore] = createInjectionState(() => {
     }
 
     const res = await search(searchQuery)
-    if ((res.data as any)?.code === 0) {
-      searchData.value = []
-    } else {
-      searchData.value = res.data ?? []
-    }
+
+    searchData.value = res.data ?? {}
+  }
+  
+  if(searchQuery.callsign){
+    onSearch(searchQuery)
   }
 
   return { searchQuery, onSearch, searchData }

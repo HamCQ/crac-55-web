@@ -1,9 +1,20 @@
+<!--
+ * @Description: 
+ * @Author: BG7ZAG bg7zag@gmail.com
+ * @Date: 2023-08-14
+ * @LastEditors: BG7ZAG bg7zag@gmail.com
+ * @LastEditTime: 2023-08-15
+-->
 <script lang="ts" setup>
 import { useHomeStore } from '@/store/home'
 
 defineOptions({ name: 'HomeSearch' })
 
 const homeStore = useHomeStore()!
+
+const onSearch = () => {
+  homeStore.onSearch({ callsign: homeStore.searchQuery.callsign })
+}
 </script>
 
 <template>
@@ -14,32 +25,32 @@ const homeStore = useHomeStore()!
       <div
         class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center"
       >
-        <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">2023年度</h1>
-        <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
-          纪念“5.5中国业余无线电节”空中通联活动
+        <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900 hs-year">
+          {{ $t('home.year') }}
+        </h1>
+        <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900 hs-title">
+          {{ $t('home.title') }}
         </h1>
         <div class="flex w-full md:justify-start justify-center items-end">
-          <div class="relative mr-4 md:w-full lg:w-full xl:w-1/2 w-2/4">
-            <form method="GET" action="https://api.hamcq.cn/partner/crac/2023">
-              <!-- <label for="hero-field" class="leading-7 text-sm text-gray-600">Placeholder</label> -->
-              <input
-                type="text"
-                placeholder="请输入您的呼号"
-                id="hero-field"
-                name="callsign"
-                class="w-full bg-gray-100 rounded border bg-opacity-50 border-gray-300 focus:ring-2 focus:ring-purple-200 focus:bg-transparent focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                v-model="homeStore.searchQuery.callsign"
-              />
-            </form>
+          <div class="relative mr-4 md:w-full lg:w-full xl:w-1/2 w-2/4 hs-input-block">
+            <input
+              type="text"
+              :placeholder="$t('home.searchPlaceholder')"
+              id="hero-field"
+              name="callsign"
+              class="w-full bg-gray-100 rounded border bg-opacity-50 border-gray-300 focus:ring-2 focus:ring-purple-200 focus:bg-transparent focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              v-model="homeStore.searchQuery.callsign"
+              @keyup.enter="onSearch"
+            />
           </div>
           <button
             class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
-            @click="homeStore.onSearch({ callsign: homeStore.searchQuery.callsign })"
+            @click="onSearch"
           >
-            查询日志
+            {{ $t('home.searchBtn') }}
           </button>
         </div>
-        <p class="text-sm mt-2 text-gray-500 mb-8 w-full">输入呼号查询可在线获取奖状</p>
+        <p class="text-sm mt-2 text-gray-500 mb-8 w-full hs-tip">{{ $t('home.searchTip') }}</p>
       </div>
 
       <div class="lg:max-w-lg lg:w-full md:w-1/2 search-img">
@@ -54,19 +65,46 @@ const homeStore = useHomeStore()!
 </template>
 
 <style lang="scss" scoped>
-@media screen and (width <= 768px) {
+@media screen and (width <= 820px) {
   .home-search {
     .home-search-block {
+      width: 100%;
       padding: 0;
 
       > .items-center {
-        margin-bottom: 0;
+        align-items: center;
+        width: 100%;
+        padding-right: 0;
+        margin-right: 0;
+        text-align: center;
+
+        .hs-input-block {
+          flex: 1;
+        }
+
+        button {
+          padding-right: 20px;
+          padding-left: 20px;
+          white-space: nowrap;
+        }
+
+        input {
+          flex: 1;
+        }
       }
     }
 
     .search-img {
       display: none;
     }
+  }
+
+  .hs-tip {
+    margin-top: 20px;
+  }
+
+  #hero-field {
+    margin-top: 20px;
   }
 }
 </style>

@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@icon-park/vue-next": "^1.4.2",
+    "@lottiefiles/lottie-player": "^2.0.2",
     "@vueuse/core": "^10.3.0",
     "@vueuse/shared": "^10.3.0",
     "axios": "^1.4.0",
