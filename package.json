@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "vite --mode development",
-    "build:dev": "run-p type-check && vite build --mode development",
-    "build:test": "run-p type-check  && vite build --mode testing",
-    "build:prod": "run-p type-check  && vite build --mode production",
+    "build:dev": "run-p type-check && vite build --base=/ --mode development",
+    "build:test": "run-p type-check  && vite build --base=/ --mode testing",
+    "build:prod": "run-p type-check  && vite build --base=/ --mode production",
     "preview": "vite preview",
     "test:unit": "vitest",
     "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
