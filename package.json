@@ -15,9 +15,10 @@
     "lint:prettier": "prettier --write  \"src/**/*.{js,json,tsx,css,less,scss,vue,html,md}\"",
     "lint:stylelint": "stylelint --cache --fix \"**/*.{vue,less,postcss,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/",
     "lint:lint-staged": "lint-staged",
-    "format": "prettier --write src/"
+    "prepare": "husky install"
   },
   "dependencies": {
+    "@amap/amap-jsapi-loader": "^1.0.1",
     "@icon-park/vue-next": "^1.4.2",
     "@lottiefiles/lottie-player": "^2.0.2",
     "@vueuse/core": "^10.3.0",

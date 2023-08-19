@@ -48,7 +48,7 @@
       "source.fixAll.eslint": true,
       "source.fixAll.stylelint": true
     },
-    "editor.defaultFormatter": "Vue.volar"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "vue.codeActions.enabled": false,
   "fileheader.configObj": {
