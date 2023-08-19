@@ -1,8 +1,8 @@
 /*
- * @Description: 
- * @Author: zyg0121 zhouyiguo2012@qq.com
- * @Date: 2023-08-17
- * @LastEditors: zyg0121 zhouyiguo2012@qq.com
+ * @Description: 路由配置
+ * @Author: BG7ZAG bg7zag@gmail.com
+ * @Date: 2023-08-11
+ * @LastEditors: BG7ZAG bg7zag@gmail.com
  * @LastEditTime: 2023-08-17
  */
 import { useStorage } from '@vueuse/core'
@@ -23,6 +23,12 @@ const router = createRouter({
           name: 'HomePage',
           component: () => import('../views/home/index.vue'),
           meta: { title: '首页', titleEn: 'Home' }
+        },
+        {
+          path: 'statistics',
+          name: 'StatisticsPage',
+          component: () => import('../views/statistics/index.vue'),
+          meta: { title: '统计', titleEn: 'Statistics' }
         },
         {
           path: 'archive',

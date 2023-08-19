@@ -2,17 +2,19 @@
  * @Description: 首页
  * @Author: BG7ZAG bg7zag@qq.com
  * @Date: 2023-08-11
+ * @LastEditors: BG7ZAG bg7zag@gmail.com
  * @LastEditors: zyg0121 zhouyiguo2012@qq.com
  * @LastEditTime: 2023-08-17
  */
 import { createInjectionState } from '@vueuse/shared'
 import { ref } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 
-import { search , award } from '@/api/55'
+import { award, search } from '@/api/55/search'
 
 const [useProvideHomeStore, useHomeStore] = createInjectionState(() => {
   const route = useRoute()
+  const router = useRouter()
 
   // 呼号
   const searchQuery = reactive<Search55V1Types.IRequest>({
@@ -30,6 +32,7 @@ const [useProvideHomeStore, useHomeStore] = createInjectionState(() => {
    * 搜索
    */
   const onSearch = async ({ callsign, year }: Partial<Search55V1Types.IRequest>) => {
+    callsign = callsign?.trim() ?? ''
     searchQuery.callsign = callsign ?? ''
     if (year) {
       searchQuery.year = year
@@ -38,6 +41,13 @@ const [useProvideHomeStore, useHomeStore] = createInjectionState(() => {
     const res = await search(searchQuery)
 
     searchData.value = res ?? {}
+    router.push({
+      path: route.path,
+      query: {
+        ...route.query,
+        callsign: callsign
+      }
+    })
   }
 
   if (searchQuery.callsign) {
@@ -58,11 +68,11 @@ const [useProvideHomeStore, useHomeStore] = createInjectionState(() => {
     awardData.value = res ?? {}
   }
 
-  if(searchQuery.callsign) {
+  if (searchQuery.callsign) {
     onAward(searchQuery)
   }
 
-  return { searchQuery, onSearch, searchData , onAward, awardData}
+  return { searchQuery, onSearch, searchData, onAward, awardData }
 })
 
 // 使用方法参考 https://vueuse.org/shared/createInjectionState/

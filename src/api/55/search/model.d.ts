@@ -51,13 +51,13 @@ declare namespace Award55V1Types {
   }
 
   export type IResponse = {
-      award_string: string
-      award_type: number
-      continent: string
-      bncra_num: number
-      callsign: string
-      img_url: string
-      img_url_origin: string
-      combination: number
+    award_string: string
+    award_type: number
+    continent: string
+    bncra_num: number
+    callsign: string
+    img_url: string
+    img_url_origin: string
+    combination: number
   }
 }
