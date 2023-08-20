@@ -3,7 +3,7 @@
  * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-14
  * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-19
+ * @LastEditTime: 2023-08-21
  */
 declare namespace TotalAnalyseTypes {
   export type IRequest = {}
@@ -88,5 +88,19 @@ declare namespace BncraBarchartAnalyseTypes {
     phone_num: number
     digi_num: number
     sum: number
+  }
+}
+
+declare namespace AllRankAnalyseTypes {
+  export type IRequest = {
+    /** 所属年份 */
+    year?: string
+    type?: string
+  }
+
+  export type IResponse = {
+    callsign: string
+    number: number
+    score: number
   }
 }
