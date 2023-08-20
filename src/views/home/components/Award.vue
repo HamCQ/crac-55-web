@@ -2,8 +2,8 @@
  * @Description: 获奖
  * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-15
- * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-17
+ * @LastEditors: zyg0121 zhouyiguo2012@qq.com
+ * @LastEditTime: 2023-08-20
 -->
 <script lang="ts" setup>
 import '@lottiefiles/lottie-player'
@@ -88,9 +88,11 @@ onBeforeUnmount(() => {
     <el-dialog
       :title="$t('home.award.download')"
       v-model="awardDialogVisible"
-      :width="windowWidth < 992 ? '80%' : '40%'"
+      :fullscreen="windowWidth < 992"
+      :width="windowWidth < 992 ? '100%' : '40%'"
       center
     >
+      <!-- 如果屏幕分辨率低于992px 对话框转为全屏 并修改按钮文字不能换行 -->
       <!-- <span>{{ awardData.img_url }}</span> -->
       <el-image v-if="awardData?.img_url" :src="awardData.img_url" fit="contain" />
 
@@ -120,7 +122,7 @@ onBeforeUnmount(() => {
           <div class="flex flex-wrap -m-4 text-center">
             <div class="p-4 sm:w-1/2 w-1/2">
               <button
-                class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+                class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg whitespace-nowrap"
               >
                 <a
                   :href="awardData?.img_url_origin"
@@ -132,7 +134,7 @@ onBeforeUnmount(() => {
             </div>
             <div class="p-4 sm:w-1/2 w-1/2">
               <button
-                class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+                class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg whitespace-nowrap"
               >
                 <a
                   target="_blank"
