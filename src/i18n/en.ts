@@ -2,8 +2,8 @@
  * @Description:
  * @Author: BG7ZAG bg7zag@qq.com
  * @Date: 2023-08-11
- * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-19
+ * @LastEditors: zyg0121 zhouyiguo2012@qq.com
+ * @LastEditTime: 2023-08-20
  */
 export default {
   layout: {
@@ -78,6 +78,17 @@ export default {
     },
     proportionMode: {
       title: 'Proportion Of Mode'
+    }
+  },
+
+  onlineSlot: {
+    title: 'CRAC headquarters radio on the air status',
+    refrash: 'Select the refresh interval:',
+    refrashTime: {
+      0: 'Not refresh',
+      1: '1 minute',
+      5: '5 minute',
+      10: '10 minute'
     }
   }
 }

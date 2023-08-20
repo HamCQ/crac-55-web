@@ -1,3 +1,10 @@
+/*
+ * @Description:
+ * @Author: zyg0121 zhouyiguo2012@qq.com
+ * @Date: 2023-08-17
+ * @LastEditors: zyg0121 zhouyiguo2012@qq.com
+ * @LastEditTime: 2023-08-20
+ */
 import { fileURLToPath, URL } from 'node:url'
 
 import vue from '@vitejs/plugin-vue'
@@ -31,9 +38,10 @@ export default defineConfig({
     }
   },
   server: {
-    proxy:{
+    proxy: {
       '/v1': {
         target: 'https://dev.hamcq.cn/v1',
+        //target: 'http://127.0.0.1:4523/m1/3178384-0-default/v1',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/v1/, '')
       }

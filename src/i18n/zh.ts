@@ -2,8 +2,8 @@
  * @Description:
  * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-11
- * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-19
+ * @LastEditors: zyg0121 zhouyiguo2012@qq.com
+ * @LastEditTime: 2023-08-20
  */
 
 export default {
@@ -80,6 +80,17 @@ export default {
     },
     proportionMode: {
       title: 'BnCRA 电台通联模式比例'
+    }
+  },
+
+  onlineSlot: {
+    title: 'CRAC 总部电台上线状态',
+    refrash: '选择刷新间隔：',
+    refrashTime: {
+      0: '不自动刷新',
+      1: '1分钟',
+      5: '5分钟',
+      10: '10分钟'
     }
   }
 }
