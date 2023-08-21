@@ -3,7 +3,7 @@
  * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-17
  * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-17
+ * @LastEditTime: 2023-08-21
 -->
 <script lang="ts" setup>
 import { computed, onMounted, ref } from 'vue'
@@ -59,7 +59,11 @@ const router = useRouter()
  * 跳转排行列表
  */
 const goto = (type: RANKING_TYPE) => {
-  router.push('/ranking?type=' + type)
+  let path = '/ranking?type=' + type
+  if (props.year) {
+    path = path + '&year=' + props.year
+  }
+  router.push(path)
 }
 </script>
 

@@ -3,7 +3,7 @@
  * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-17
  * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-19
+ * @LastEditTime: 2023-08-21
 -->
 <script lang="ts" setup>
 import { useAsyncState } from '@vueuse/core'
@@ -24,21 +24,22 @@ const { execute, isLoading, state } = useAsyncState(bncraBarchartAnalyse, [], {
 })
 
 const route = useRoute()
+const year = computed(() => (route.query?.year as string) ?? '')
 onMounted(() => {
-  execute(0, { year: (route.query?.year as string) ?? '' })
+  execute(0, { year: year.value })
 })
 </script>
 
 <template>
   <div class="statistics">
     <!-- 统计 -->
-    <Total />
+    <Total :year="year" />
     <!-- TOP5 -->
-    <Ranking />
+    <Ranking :year="year" />
     <!-- BY 电台通联数量统计（0-9 区） -->
-    <BYStationTotal />
+    <BYStationTotal :year="year" />
     <!-- 地图 -->
-    <Map />
+    <Map :year="year" />
     <!-- BnCRA 电台通联统计 -->
     <BnCRATotal :loading="isLoading" :state="state" />
     <!-- BnCRA 电台通联模式比例 -->

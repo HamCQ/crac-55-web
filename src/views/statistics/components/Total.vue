@@ -3,7 +3,7 @@
  * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-17
  * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-17
+ * @LastEditTime: 2023-08-21
 -->
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue'
@@ -13,9 +13,9 @@ import { totalAnalyse } from '../../../api/55/analyse'
 defineOptions({ name: 'StatisticTotal' })
 
 const total = ref<TotalAnalyseTypes.IResponse>({} as TotalAnalyseTypes.IResponse)
-
+const props = defineProps<{ year: string }>()
 const getData = async () => {
-  const res = await totalAnalyse({})
+  const res = await totalAnalyse({ year: props.year ?? '' })
   total.value = res
 }
 
