@@ -2,8 +2,8 @@
  * @Description:
  * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-11
- * @LastEditors: zyg0121 zhouyiguo2012@qq.com
- * @LastEditTime: 2023-08-20
+ * @LastEditors: BG7ZAG bg7zag@gmail.com
+ * @LastEditTime: 2023-08-21
  */
 
 export default {
@@ -91,6 +91,25 @@ export default {
       1: '1分钟',
       5: '5分钟',
       10: '10分钟'
+    }
+  },
+
+  ranking: {
+    updateTime: '最近更新时间：',
+    total: '总数：',
+    callSign: '呼号',
+    points: '得分'
+  },
+
+  archive: {
+    title: '历年活动页面',
+    years: {
+      2022: {
+        title: 'CRAC 2022 年度纪念 “5.5中国业余无线电节” 空中通联活动查询页面'
+      },
+      2023: {
+        title: 'CRAC 2023 年度纪念 “5.5中国业余无线电节” 空中通联活动查询页面'
+      }
     }
   }
 }

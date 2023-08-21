@@ -2,8 +2,8 @@
  * @Description:
  * @Author: BG7ZAG bg7zag@qq.com
  * @Date: 2023-08-11
- * @LastEditors: zyg0121 zhouyiguo2012@qq.com
- * @LastEditTime: 2023-08-20
+ * @LastEditors: BG7ZAG bg7zag@gmail.com
+ * @LastEditTime: 2023-08-21
  */
 export default {
   layout: {
@@ -89,6 +89,27 @@ export default {
       1: '1 minute',
       5: '5 minute',
       10: '10 minute'
+    }
+  },
+
+  ranking: {
+    updateTime: 'Last update time:',
+    total: 'Total:',
+    callSign: 'CallSign',
+    points: 'Points'
+  },
+
+  archive: {
+    title: 'Events page over the years',
+    years: {
+      2022: {
+        title:
+          'CRAC 2022 Annual Commemorative "5.5 China Amateur Radio Festival" Air Connection Activity Query Page'
+      },
+      2023: {
+        title:
+          'CRAC 2023 Annual Commemorative "5.5 China Amateur Radio Festival" Air Connection Activity Query Page'
+      }
     }
   }
 }

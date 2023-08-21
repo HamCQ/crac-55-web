@@ -3,11 +3,11 @@
  * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-14
  * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-17
+ * @LastEditTime: 2023-08-21
 -->
 <script lang="ts" setup>
 import { useI18n } from 'vue-i18n'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 const { t } = useI18n()
 
 defineOptions({ name: 'HeaderNav' })
@@ -16,7 +16,7 @@ const emits = defineEmits<{
   (event: 'close'): void
 }>()
 const router = useRouter()
-
+const route = useRoute()
 /**
  * 跳转页面
  */
@@ -26,6 +26,8 @@ const goto = (path: string) => {
     emits('close')
     return
   }
+  const year = route.query?.year as string
+  path = year ? path + '?year=' + year : path
   router.push(path)
   emits('close')
 }
@@ -37,28 +39,33 @@ const goto = (path: string) => {
     <span class="mr-5 hover:text-gray-900 cursor-pointer" @click="goto('/')">{{
       t('layout.header.home')
     }}</span>
+
     <!-- 统计 -->
     <span class="mr-5 hover:text-gray-900 cursor-pointer" @click="goto('/statistics')">{{
       t('layout.header.statistics')
     }}</span>
+
+    <!-- 总部电台上线状态 -->
+    <span class="mr-5 hover:text-gray-900 cursor-pointer" @click="goto('/onlineStatus')">{{
+      t('layout.header.onTheAir')
+    }}</span>
+
+    <!-- CRAC站点 -->
+    <!-- <span @click="goto('http://www.crac.org.cn/')" class="mr-5 hover:text-gray-900">{{
+      t('layout.header.cracSite')
+    }}</span> -->
+
+    <!-- 历年活动 -->
+    <span class="mr-5 hover:text-gray-900 cursor-pointer" @click="goto('/archive')">{{
+      t('layout.header.archive')
+    }}</span>
+
     <!-- 活动说明 -->
     <span
       @click="goto('http://www.crac.org.cn/News/Detail?ID=e3af63b9066b409d8ba10858e61f5e75')"
       class="mr-5 hover:text-gray-900"
       >{{ t('layout.header.about') }}</span
     >
-    <!-- 总部电台上线状态 -->
-    <span class="mr-5 hover:text-gray-900 cursor-pointer" @click="goto('/onlineStatus')">{{
-      t('layout.header.onTheAir')
-    }}</span>
-    <!-- CRAC站点 -->
-    <span @click="goto('http://www.crac.org.cn/')" class="mr-5 hover:text-gray-900">{{
-      t('layout.header.cracSite')
-    }}</span>
-    <!-- 历年活动 -->
-    <span class="mr-5 hover:text-gray-900 cursor-pointer" @click="goto('/archive')">{{
-      t('layout.header.archive')
-    }}</span>
   </nav>
 </template>
 

@@ -2,13 +2,13 @@
  * @Description:
  * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-14
- * @LastEditors: zyg0121 zhouyiguo2012@qq.com
- * @LastEditTime: 2023-08-17
+ * @LastEditors: BG7ZAG bg7zag@gmail.com
+ * @LastEditTime: 2023-08-21
  */
 declare namespace Search55V1Types {
   export type IRequest = {
     /** 年份 */
-    year: number
+    year: string
     /** 呼号 */
     callsign: string
   }
@@ -47,7 +47,7 @@ declare namespace Award55V1Types {
     /** 呼号 */
     callsign: string
     /** 年份 */
-    year: number
+    year: string
   }
 
   export type IResponse = {

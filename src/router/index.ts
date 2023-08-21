@@ -3,7 +3,7 @@
  * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-11
  * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-17
+ * @LastEditTime: 2023-08-20
  */
 import { useStorage } from '@vueuse/core'
 import { createRouter, createWebHistory } from 'vue-router'
@@ -47,6 +47,12 @@ const router = createRouter({
           name: 'AwardPage',
           component: () => import('../views/award/index.vue'),
           meta: { title: '申请奖状', titleEn: 'Apply Paper Award' }
+        },
+        {
+          path: 'ranking',
+          name: 'RankingPage',
+          component: () => import('../views/ranking/index.vue'),
+          meta: { title: '排行榜', titleEn: 'Ranking List' }
         },
         // 将匹配所有内容并将其放在 `$route.params.pathMatch` 下
         {
