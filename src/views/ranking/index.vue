@@ -2,7 +2,7 @@
  * @Description: 全部排行
  * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-20
- * @LastEditors: BG7ZAG bg7zag@gmail.com
+ * @LastEditors: BG7ZAG bg7zag@qq.com
  * @LastEditTime: 2023-08-21
 -->
 <script lang="ts" setup>
@@ -21,8 +21,7 @@ const { query } = route
 
 const queryData = reactive({
   year: (query?.year as string) ?? '',
-  type: (query?.type as string) ?? '',
-  page: 1
+  type: (query?.type as string) ?? ''
 })
 
 const { limit, list, loading, getList, handlePageChange, handleSizeChange } =
@@ -32,7 +31,7 @@ const { limit, list, loading, getList, handlePageChange, handleSizeChange } =
   )
 
 onMounted(() => {
-  getList({ page: 2 })
+  getList()
 })
 
 const { t } = useI18n()
@@ -81,14 +80,14 @@ const rankingTitle: Record<string, any> = computed(() => ({
         <el-table-column prop="callsign" label="呼号" align="center" />
         <el-table-column prop="score" label="得分" align="center" />
       </ElTable>
-      <ElPagination
-        v-model:current-page="limit.page"
-        :page-size="limit.page_size"
-        layout="total, prev, pager, next"
-        :total="limit.total"
-        @size-change="handleSizeChange"
-        @current-change="handlePageChange"
-      />
+      <div class="mt-5 flex justify-end">
+        <ElPagination
+          v-model:currentPage="limit.page"
+          v-model:pageSize="limit.page_size"
+          layout="total, prev, pager, next"
+          :total="limit.total"
+        />
+      </div>
     </div>
   </div>
 </template>

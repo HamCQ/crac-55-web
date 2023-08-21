@@ -2,7 +2,7 @@
  * @Description: 分页
  * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-20
- * @LastEditors: BG7ZAG bg7zag@gmail.com
+ * @LastEditors: BG7ZAG bg7zag@qq.com
  * @LastEditTime: 2023-08-21
  */
 
@@ -41,9 +41,9 @@ export const useQueryWithPagination = <T extends object, S>(
     loading.value = true
     try {
       const { data, total } = await fn({
+        ...query,
         page: _limit?.page ?? limit.page,
-        page_size: _limit?.page_size ?? limit.page_size,
-        ...query
+        page_size: _limit?.page_size ?? limit.page_size
       })
       list.value = data ?? ([] as NonNullable<S>)
       limit.total = total ?? 0
@@ -64,26 +64,23 @@ export const useQueryWithPagination = <T extends object, S>(
       loading.value = false
     }
   }
-  // 第几页
-  const handlePageChange = (e: number) => {
-    limit.page = e
+
+  // 监听分页变化
+  watch([() => limit.page, () => limit.page_size], ([page, page_size], [_oldPage, oldPageSize]) => {
+    if (page_size != oldPageSize) {
+      limit.page = 1
+      limit.page_size = page_size
+    } else {
+      limit.page = page
+    }
     list.value = [] as S[]
     getList()
-  }
-  // 每页几条
-  const handleSizeChange = (e: number) => {
-    limit.page_size = e
-    limit.page = 1
-    list.value = [] as S[]
-    getList()
-  }
+  })
 
   return {
     loading: readonly(loading),
     list: list,
     limit: limit,
-    handleSizeChange,
-    handlePageChange,
     getList,
     initialLoaded: initialLoaded
   }
