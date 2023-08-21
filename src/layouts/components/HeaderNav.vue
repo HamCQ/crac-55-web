@@ -3,11 +3,11 @@
  * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-14
  * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-17
+ * @LastEditTime: 2023-08-21
 -->
 <script lang="ts" setup>
 import { useI18n } from 'vue-i18n'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 const { t } = useI18n()
 
 defineOptions({ name: 'HeaderNav' })
@@ -16,7 +16,7 @@ const emits = defineEmits<{
   (event: 'close'): void
 }>()
 const router = useRouter()
-
+const route = useRoute()
 /**
  * 跳转页面
  */
@@ -26,6 +26,8 @@ const goto = (path: string) => {
     emits('close')
     return
   }
+  const year = route.query?.year as string
+  path = year ? path + '?year=' + year : path
   router.push(path)
   emits('close')
 }

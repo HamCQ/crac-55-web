@@ -4,7 +4,7 @@
  * @Date: 2023-08-11
  * @LastEditors: BG7ZAG bg7zag@gmail.com
  * @LastEditors: zyg0121 zhouyiguo2012@qq.com
- * @LastEditTime: 2023-08-17
+ * @LastEditTime: 2023-08-21
  */
 import { createInjectionState } from '@vueuse/shared'
 import { ref } from 'vue'
@@ -19,7 +19,7 @@ const [useProvideHomeStore, useHomeStore] = createInjectionState(() => {
   // 呼号
   const searchQuery = reactive<Search55V1Types.IRequest>({
     callsign: (route?.query?.callsign as string) ?? '',
-    year: new Date().getFullYear()
+    year: new Date().getFullYear().toString()
   })
 
   // 搜索结果
@@ -34,8 +34,8 @@ const [useProvideHomeStore, useHomeStore] = createInjectionState(() => {
   const onSearch = async ({ callsign, year }: Partial<Search55V1Types.IRequest>) => {
     callsign = callsign?.trim() ?? ''
     searchQuery.callsign = callsign ?? ''
-    if (year) {
-      searchQuery.year = year
+    if (year || route.query.year) {
+      searchQuery.year = (year || route.query.year) as string
     }
 
     const res = await search(searchQuery)
@@ -59,8 +59,8 @@ const [useProvideHomeStore, useHomeStore] = createInjectionState(() => {
    */
   const onAward = async ({ callsign, year }: Partial<Award55V1Types.IRequest>) => {
     searchQuery.callsign = callsign ?? ''
-    if (year) {
-      searchQuery.year = year
+    if (year || route.query.year) {
+      searchQuery.year = (year || route.query.year) as string
     }
 
     const res = await award(searchQuery)

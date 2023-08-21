@@ -6,7 +6,9 @@
  * @LastEditTime: 2023-08-21
  */
 declare namespace TotalAnalyseTypes {
-  export type IRequest = {}
+  export type IRequest = {
+    year?: string
+  }
 
   export type IResponse = {
     /** QSO数量 */

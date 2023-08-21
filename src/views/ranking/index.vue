@@ -2,11 +2,12 @@
  * @Description: 全部排行
  * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-20
- * @LastEditors: BG7ZAG bg7zag@qq.com
+ * @LastEditors: BG7ZAG bg7zag@gmail.com
  * @LastEditTime: 2023-08-21
 -->
 <script lang="ts" setup>
-import { ElPagination, ElTable } from 'element-plus'
+import { useMediaQuery } from '@vueuse/core'
+import { dayjs, ElPagination, ElTable } from 'element-plus'
 import { useI18n } from 'vue-i18n'
 import { useRoute } from 'vue-router'
 
@@ -16,6 +17,8 @@ import { useQueryWithPagination } from '@/hooks/usePage'
 
 defineOptions({ name: 'RankingPage' })
 
+const isPhone = useMediaQuery('(max-width: 500px)')
+
 const route = useRoute()
 const { query } = route
 
@@ -24,14 +27,26 @@ const queryData = reactive({
   type: (query?.type as string) ?? ''
 })
 
-const { limit, list, loading, getList, handlePageChange, handleSizeChange } =
-  useQueryWithPagination<AllRankAnalyseTypes.IRequest, AllRankAnalyseTypes.IResponse>(
-    queryData,
-    allRankAnalyse
-  )
+const { limit, list, loading, getList } = useQueryWithPagination<
+  AllRankAnalyseTypes.IRequest,
+  AllRankAnalyseTypes.IResponse
+>(queryData, allRankAnalyse)
 
 onMounted(() => {
   getList()
+})
+
+const updateTime = ref()
+const rankingList = ref<AllRankAnalyseTypes.IResponse[]>([])
+watch(list, (val) => {
+  if (limit.page == 1) {
+    if (val[0]?.callsign == 'update_time' && val[0]?.score) {
+      updateTime.value = parseInt(val[0].score + '000')
+    }
+    rankingList.value = val.slice(1)
+  } else {
+    rankingList.value = val
+  }
 })
 
 const { t } = useI18n()
@@ -63,28 +78,36 @@ const rankingTitle: Record<string, any> = computed(() => ({
       {{ query.type ? rankingTitle[query.type as any]?.name : '' }}
     </h1>
     <div class="text-base text-right text-gray-500 mt-3">
-      <span>更新时间：2023-8-20 23:30:37</span>
-      <span class="ml-10">总数：2330</span>
+      <span
+        >{{ $t('ranking.updateTime') }}
+        {{ updateTime ? dayjs(updateTime).format('YYYY-MM-DD HH:mm:ss') : '--' }}</span
+      >
+      <span class="ml-10">{{ $t('ranking.total') }} {{ limit.total - 1 }}</span>
     </div>
 
     <div>
       <ElTable
         class="mt-10"
-        :data="list"
+        :data="rankingList"
         stripe
         style="width: 100%"
         v-loading="loading"
         :limit="limit"
       >
-        <el-table-column type="index" label="#" />
-        <el-table-column prop="callsign" label="呼号" align="center" />
-        <el-table-column prop="score" label="得分" align="center" />
+        <el-table-column type="index" label="#" width="80">
+          <template #default="scope">
+            {{ scope.$index + 1 + (limit.page - 1) * limit.page_size - (limit.page > 1 ? 1 : 0) }}
+          </template>
+        </el-table-column>
+        <el-table-column prop="callsign" :label="$t('ranking.callSign')" align="center" />
+        <el-table-column prop="score" :label="$t('ranking.points')" align="center" />
       </ElTable>
-      <div class="mt-5 flex justify-end">
+      <div :class="['mt-5 flex', isPhone ? 'justify-center' : 'justify-end']">
         <ElPagination
           v-model:currentPage="limit.page"
           v-model:pageSize="limit.page_size"
-          layout="total, prev, pager, next"
+          :pager-count="5"
+          :layout="isPhone ? 'total, prev, pager, next' : 'total, prev, pager, next, jumper'"
           :total="limit.total"
         />
       </div>
