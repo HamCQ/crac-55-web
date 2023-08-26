@@ -3,7 +3,7 @@
  * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-11
  * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-26
+ * @LastEditTime: 2023-08-27
  */
 
 export default {
@@ -16,6 +16,10 @@ export default {
       onTheAir: '总部电台上线状态',
       cracSite: 'CRAC 站点',
       archive: '历年活动'
+    },
+    footer: {
+      contributions: '开发贡献',
+      acknowledgement: '赞助鸣谢'
     }
   },
 
@@ -112,5 +116,10 @@ export default {
         title: 'CRAC 2023 年度纪念 “5.5中国业余无线电节” 空中通联活动查询页面'
       }
     }
+  },
+
+  acknowledgement: {
+    title: '感谢以下单位和组织向本活动提供大力支持',
+    sponsors: '年赞助商 '
   }
 }

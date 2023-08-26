@@ -3,7 +3,7 @@
  * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-16
  * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-16
+ * @LastEditTime: 2023-08-26
 -->
 <script lang="ts" setup>
 import '@lottiefiles/lottie-player'
@@ -23,12 +23,14 @@ const VITE_NOT_FOUND_LOTTIE = import.meta.env.VITE_NOT_FOUND_LOTTIE
       loop=""
       autoplay=""
     ></lottie-player>
+    <h2 class="title-font font-medium sm:text-3xl text-2xl text-gray-900">404 NotFound</h2>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .not-found {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
@@ -37,7 +39,6 @@ const VITE_NOT_FOUND_LOTTIE = import.meta.env.VITE_NOT_FOUND_LOTTIE
   .not-found-lottie {
     width: 500px;
     max-width: 100%;
-    
   }
 }
 </style>

@@ -2,8 +2,8 @@
  * @Description:
  * @Author: zyg0121 zhouyiguo2012@qq.com
  * @Date: 2023-08-17
- * @LastEditors: zyg0121 zhouyiguo2012@qq.com
- * @LastEditTime: 2023-08-20
+ * @LastEditors: BG7ZAG bg7zag@gmail.com
+ * @LastEditTime: 2023-08-27
  */
 import { fileURLToPath, URL } from 'node:url'
 
@@ -18,25 +18,32 @@ import { defineConfig } from 'vite'
 const pathSrc = path.resolve(__dirname, 'src')
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    vue(),
-    vueJsx(),
-    AutoImport({
-      // 自动导入 Vue 相关函数，如：ref, reactive, toRef 等
-      imports: ['vue'],
-      resolvers: [ElementPlusResolver()],
-      dts: path.resolve(pathSrc, 'auto-imports.d.ts')
-    }),
-    Components({
-      resolvers: [ElementPlusResolver()],
-      dts: path.resolve(pathSrc, 'components.d.ts')
-    })
-  ],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
+
+  plugins: [
+    vue(),
+    vueJsx(),
+
+    Components({
+      resolvers: [
+        ElementPlusResolver({
+          importStyle: 'sass'
+        })
+      ],
+      dts: path.resolve(pathSrc, 'components.d.ts')
+    }),
+    AutoImport({
+      // 自动导入 Vue 相关函数，如：ref, reactive, toRef 等
+      imports: ['vue'],
+      resolvers: [ElementPlusResolver()],
+      dts: path.resolve(pathSrc, 'auto-imports.d.ts')
+    })
+  ],
+
   server: {
     proxy: {
       '/v1': {
