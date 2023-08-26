@@ -2,14 +2,16 @@
  * @Description: 总部电台上线状态
  * @Author: BG7ZAG bg7zag@qq.com
  * @Date: 2023-08-11
- * @LastEditors: zyg0121 zhouyiguo2012@qq.com
- * @LastEditTime: 2023-08-20
+ * @LastEditors: BG7ZAG bg7zag@gmail.com
+ * @LastEditTime: 2023-08-26
 -->
 <script lang="ts" setup>
 defineOptions({ name: 'OnlineStatus' })
+import { useIntervalFn, useTimeoutFn } from '@vueuse/shared'
 import { ElOption, ElSelect } from 'element-plus'
 import { onMounted, onUnmounted, ref, watch } from 'vue'
 import { toRefs } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 import { slot } from '@/api/55/slot'
 
@@ -21,7 +23,6 @@ const slotRes = ref<Slot55V1Types.IResponse>({} as Slot55V1Types.IResponse)
 const getData = async () => {
   const res = await slot()
   slotRes.value = res
-  console.log('slot', slotRes.value)
 }
 
 onMounted(() => {
@@ -107,27 +108,54 @@ const showList = computed(() => {
 })
 
 // 自动刷新
-const selectedInterval = ref('0')
-const refreshTimer = ref<number>()
+const selectedInterval = ref(0)
 
+// 倒计时执行
+const { start, stop } = useTimeoutFn(
+  async () => {
+    await getData()
+    start()
+  },
+  selectedInterval,
+  {
+    immediate: false
+  }
+)
+
+// 监听刷新时间变化
 watch(selectedInterval, (newValue) => {
   const interval = Number(newValue)
   if (interval > 0) {
-    clearInterval(refreshTimer.value)
-    refreshTimer.value = setInterval(
-      () => {
-        location.reload()
-      },
-      interval * 60 * 1000
-    ) as unknown as number
+    stop()
+    start()
   } else {
-    clearInterval(refreshTimer.value)
+    stop()
   }
 })
 
 onUnmounted(() => {
-  clearInterval(refreshTimer.value)
+  stop()
 })
+const { t } = useI18n()
+
+const intervalOptions = computed(() => [
+  {
+    title: t('onlineSlot.refrashTime.0'),
+    value: 0
+  },
+  {
+    title: t('onlineSlot.refrashTime.1'),
+    value: 1 * 60 * 1000
+  },
+  {
+    title: t('onlineSlot.refrashTime.5'),
+    value: 5 * 60 * 1000
+  },
+  {
+    title: t('onlineSlot.refrashTime.10'),
+    value: 10 * 60 * 1000
+  }
+])
 </script>
 
 <template>
@@ -137,12 +165,15 @@ onUnmounted(() => {
     </h1>
     <div class="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto">
       <label for="refreshInterval">{{ $t('onlineSlot.refrash') }}</label>
-      <select v-model="selectedInterval" id="refreshInterval">
-        <option value="0">{{ $t('onlineSlot.refrashTime.0') }}</option>
-        <option value="1">{{ $t('onlineSlot.refrashTime.1') }}</option>
-        <option value="5">{{ $t('onlineSlot.refrashTime.5') }}</option>
-        <option value="10">{{ $t('onlineSlot.refrashTime.10') }}</option>
-      </select>
+      <ElSelect v-model="selectedInterval" id="refreshInterval" style="width: 150px">
+        <ElOption
+          v-for="item in intervalOptions"
+          :key="item.value"
+          :label="item.title"
+          :value="item.value"
+          >{{ item.title }}</ElOption
+        >
+      </ElSelect>
     </div>
   </div>
   <div class="online-status">

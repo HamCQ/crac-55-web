@@ -1,14 +1,15 @@
 /*
- * @Description:
+ * @Description: 中文配置
  * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-11
  * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-21
+ * @LastEditTime: 2023-08-26
  */
 
 export default {
   layout: {
     header: {
+      backThisYear: '回今年',
       home: '首页',
       statistics: '统计',
       about: '活动说明',
