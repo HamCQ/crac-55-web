@@ -3,7 +3,7 @@
  * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-19
  * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-19
+ * @LastEditTime: 2023-08-26
 -->
 <script lang="ts" setup>
 import { useElementSize } from '@vueuse/core'
@@ -159,7 +159,9 @@ onMounted(() => {
     ref="chartBox"
   >
     <div class="border-2 rounded-lg overflow-hidden">
-      <div class="py-3 px-5 bg-gray-50">B0CRA(6955)</div>
+      <div class="py-3 px-5 bg-gray-50">
+        {{ formData?.callsign_station ?? '' }}({{ formData?.sum ?? 0 }})
+      </div>
       <div class="pt-10 pl-5 pr-5 chart-container" ref="chart"></div>
     </div>
   </div>

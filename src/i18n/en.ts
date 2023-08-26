@@ -1,13 +1,14 @@
 /*
- * @Description:
+ * @Description: 英文配置
  * @Author: BG7ZAG bg7zag@qq.com
  * @Date: 2023-08-11
  * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-21
+ * @LastEditTime: 2023-08-26
  */
 export default {
   layout: {
     header: {
+      backThisYear: 'Back this year',
       home: 'Home',
       statistics: 'Statistics',
       about: 'About',
