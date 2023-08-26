@@ -3,7 +3,7 @@
  * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-14
  * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-26
+ * @LastEditTime: 2023-08-27
 -->
 <script lang="ts" setup>
 import { useI18n } from 'vue-i18n'
@@ -17,7 +17,6 @@ const emits = defineEmits<{
 }>()
 const router = useRouter()
 const route = useRoute()
-console.log('🚀 ~ file: HeaderNav.vue:20 ~ route:', route)
 
 /** 是否今年 */
 const hasThisYear = computed(() => {
@@ -98,10 +97,7 @@ const menus = computed(() => [
     <!-- 回今年 -->
     <template v-for="item in menus" :key="item.title">
       <span
-        :class="[
-          'mr-5 hover:text-gray-900 cursor-pointer',
-          route.path === item.path ? 'active' : ''
-        ]"
+        :class="['mr-5 cursor-pointer', route.path === item.path ? 'active' : '']"
         v-if="item.show"
         @click="() => (item.onClick ? item.onClick() : goto(item.path))"
         >{{ item.title }}</span

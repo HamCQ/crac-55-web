@@ -87,7 +87,7 @@ const initMap = () => {
         center: [104.188488, 36.302032],
         expandZoomRange: true,
         zoom: isPhone.value ? 3 : 4,
-        zooms: [3, 6],
+        zooms: isPhone.value ? [3, 6] : [4, 6],
         layers: [disCountry],
         showLabel: true,
         isHotspot: false,
