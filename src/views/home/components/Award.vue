@@ -2,8 +2,8 @@
  * @Description: 获奖
  * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-15
- * @LastEditors: zyg0121 zhouyiguo2012@qq.com
- * @LastEditTime: 2023-08-20
+ * @LastEditors: BG7ZAG bg7zag@gmail.com
+ * @LastEditTime: 2023-08-26
 -->
 <script lang="ts" setup>
 import '@lottiefiles/lottie-player'
@@ -86,7 +86,7 @@ onBeforeUnmount(() => {
     }}<a @click="clickAwardDialoge()" class="award-down">{{ t('home.award.download') }}</a>
 
     <el-dialog
-      :title="$t('home.award.download')"
+      title=""
       v-model="awardDialogVisible"
       :fullscreen="windowWidth < 992"
       :width="windowWidth < 992 ? '100%' : '40%'"
@@ -138,7 +138,9 @@ onBeforeUnmount(() => {
               >
                 <a
                   target="_blank"
-                  :href="`/award?year=${searchQuery.year}&callsign=${searchQuery.callsign}`"
+                  :href="`https://api.hamcq.cn/partner/crac/paper/${
+                    searchQuery.year ?? 2023
+                  }?callsign=${searchQuery.callsign}`"
                 >
                   {{ $t('home.award.Apply') }}</a
                 >

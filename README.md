@@ -1,56 +1,51 @@
 # crac-55-web
 
-This template should help get you started developing with Vue 3 in Vite.
+纪念“5.5中国业余无线电节”空中通联活动页面
 
-## Recommended IDE Setup
+自1940年起，每年的5月5日就成为我国业余无线电爱好者的节日——“5·5中国业余无线电节”。
+
+## 项目信息
+
+本项目基于 Vue 3.x + Vite 开发，使用 TypeScript 开发。
+
+## 建议的IDE设置
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
 
-## Type Support for `.vue` Imports in TS
+## 自定义配置
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+请查看 [Vite Configuration Reference](https://vitejs.dev/config/).
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
-
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
+## 开始
 
 ```sh
 pnpm install
 ```
 
-### Compile and Hot-Reload for Development
+### 编译和热重新加载以进行开发
 
 ```sh
 pnpm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+### 打包生成
 
 ```sh
-# 开发
+# develop
 pnpm run build:dev
-# 测试
+# test
 pnpm run build:test
-# 生产
+# prod
 npm run build:prod
 ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+### [Vitest](https://vitest.dev/) 单元测试
 
 ```sh
 pnpm run test:unit
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+### [ESLint](https://eslint.org/) 检测
 
 ```sh
 pnpm run lint
