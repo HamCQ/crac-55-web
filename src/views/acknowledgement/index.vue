@@ -2,11 +2,11 @@
  * @Description: 赞助鸣谢
  * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-27
- * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-27
+ * @LastEditors: BG7ZAG bg7zag@qq.com
+ * @LastEditTime: 2023-08-28
 -->
 <script lang="ts" setup>
-import Item from './components/item.vue'
+import Item from './components/Item.vue'
 defineOptions({ name: 'AcknowledgementPage' })
 
 const acknowledgementList = reactive([
