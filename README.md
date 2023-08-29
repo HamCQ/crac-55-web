@@ -59,7 +59,3 @@ pnpm run lint
   - `fix` 修复问题/BUG
   - `perf` 优化/性能提升
   - `style` 代码风格相关无影响运行结果的
-
-## 许可
-
-[MulanPSL2](./LICENSE)
