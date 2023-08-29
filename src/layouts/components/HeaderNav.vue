@@ -3,11 +3,13 @@
  * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-14
  * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-27
+ * @LastEditTime: 2023-08-29
 -->
 <script lang="ts" setup>
 import { useI18n } from 'vue-i18n'
 import { useRoute, useRouter } from 'vue-router'
+
+import { useConfigState } from '@/store/config'
 const { t } = useI18n()
 
 defineOptions({ name: 'HeaderNav' })
@@ -48,6 +50,8 @@ const onBack = () => {
   emits('close')
 }
 
+const { config } = useConfigState()
+
 /**
  * 菜单列表
  */
@@ -87,7 +91,7 @@ const menus = computed(() => [
   {
     show: true,
     title: t('layout.header.about'),
-    path: 'http://www.crac.org.cn/News/Detail?ID=e3af63b9066b409d8ba10858e61f5e75'
+    path: config.value?.crac_desc ?? ''
   }
 ])
 </script>

@@ -3,13 +3,14 @@
  * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-11
  * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-27
+ * @LastEditTime: 2023-08-29
  */
 import { useStorage } from '@vueuse/core'
 import { createRouter, createWebHistory } from 'vue-router'
 
 import Layout from '@/layouts/index.vue'
 import { LANGUAGE_TYPE } from '@/store/global'
+import { getDefaultLang } from '@/utils'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -77,7 +78,8 @@ const router = createRouter({
  * 路由全局后置钩子
  */
 router.afterEach((to, from) => {
-  const languageCache = useStorage<LANGUAGE_TYPE>('language', LANGUAGE_TYPE.CHINESE)
+  const languageCache = getDefaultLang()
+
   let title = to.meta.title
   let appName = import.meta.env.VITE_APP_TITLE
   if (languageCache.value == LANGUAGE_TYPE.ENGLISH) {

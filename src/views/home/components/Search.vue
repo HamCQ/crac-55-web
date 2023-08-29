@@ -2,19 +2,39 @@
  * @Description: 
  * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-14
- * @LastEditors: BG7ZAG bg7zag@qq.com
- * @LastEditTime: 2023-08-17
+ * @LastEditors: BG7ZAG bg7zag@gmail.com
+ * @LastEditTime: 2023-08-29
 -->
 <script lang="ts" setup>
+import { useConfigState } from '@/store/config'
+import { LANGUAGE_TYPE, useGlobalState } from '@/store/global'
 import { useHomeStore } from '@/store/home'
 
 defineOptions({ name: 'HomeSearch' })
 
 const homeStore = useHomeStore()!
 
+const { config } = useConfigState()
+const { language } = useGlobalState()
+
 const onSearch = () => {
   homeStore.onSearch({ callsign: homeStore.searchQuery.callsign })
 }
+
+const localConfig = computed(() => {
+  let obj = {
+    title: config.value?.title,
+    sub_title: config.value?.sub_title
+  }
+  if (language.value === LANGUAGE_TYPE.ENGLISH) {
+    obj = {
+      title: config.value?.title_en,
+      sub_title: config.value?.sub_title_en
+    }
+  }
+
+  return obj
+})
 </script>
 
 <template>
@@ -26,10 +46,10 @@ const onSearch = () => {
         class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center"
       >
         <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900 hs-year">
-          {{ $t('home.year') }}
+          {{ localConfig.title }}
         </h1>
         <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900 hs-title">
-          {{ $t('home.title') }}
+          {{ localConfig.sub_title }}
         </h1>
         <div class="flex w-full md:justify-start justify-center items-end">
           <div class="relative mr-4 md:w-full lg:w-full xl:w-1/2 w-2/4 hs-input-block">
@@ -57,7 +77,7 @@ const onSearch = () => {
         <img
           class="object-cover object-center rounded"
           alt="hero"
-          src="https://api.hamcq.cn/img/2023.svg"
+          :src="config.cover || 'https://api.hamcq.cn/img/2023.svg'"
         />
       </div>
     </div>
