@@ -3,7 +3,7 @@
  * @Author: BG7ZAG bg7zag@qq.com
  * @Date: 2023-08-11
  * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-27
+ * @LastEditTime: 2023-08-30
  */
 export default {
   layout: {
@@ -101,7 +101,8 @@ export default {
     updateTime: 'Last update time:',
     total: 'Total:',
     callSign: 'CallSign',
-    points: 'Points'
+    points: 'Points',
+    back: 'Back'
   },
 
   archive: {

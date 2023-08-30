@@ -3,7 +3,7 @@
  * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-11
  * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-20
+ * @LastEditTime: 2023-08-30
 -->
 <script lang="ts" setup>
 import { ChineseOne, English, MenuUnfoldOne } from '@icon-park/vue-next'
@@ -107,7 +107,7 @@ const onCloseDrawer = () => {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 50px;
+    height: 60px;
     padding: 0 10px;
     border-bottom: 1px solid var(--el-border-color);
 

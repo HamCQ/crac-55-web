@@ -3,7 +3,7 @@
  * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-19
  * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-26
+ * @LastEditTime: 2023-08-30
 -->
 <script lang="tsx" setup>
 import AMapLoader from '@amap/amap-jsapi-loader'
@@ -182,10 +182,19 @@ const getList = async () => {
   }
 }
 
-onMounted(() => {
-  getList()
-})
-
+watch(
+  () => props.year,
+  () => {
+    if (props.year) {
+      nextTick(() => {
+        getList()
+      })
+    }
+  },
+  {
+    immediate: true
+  }
+)
 onUnmounted(() => {
   map.value?.destroy?.()
 })
