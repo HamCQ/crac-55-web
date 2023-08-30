@@ -4,7 +4,7 @@
  * @Date: 2023-08-11
  * @LastEditors: BG7ZAG bg7zag@gmail.com
  * @LastEditors: zyg0121 zhouyiguo2012@qq.com
- * @LastEditTime: 2023-08-30
+ * @LastEditTime: 2023-08-31
  */
 import { createInjectionState } from '@vueuse/shared'
 import { dayjs, ElMessage } from 'element-plus'
@@ -42,7 +42,7 @@ const [useProvideHomeStore, useHomeStore] = createInjectionState(() => {
    * 搜索
    */
   const onSearch = async ({ callsign }: Partial<Search55V1Types.IRequest>) => {
-    searchQuery.callsign = callsign?.trim() || searchQuery.callsign
+    searchQuery.callsign = (callsign?.trim() || searchQuery.callsign)?.toLocaleUpperCase()
     if (!searchQuery.callsign) return
 
     searchQuery.year = currentYear.value ?? ''

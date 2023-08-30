@@ -2,8 +2,8 @@
  * @Description: BnCRA
  * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-14
- * @LastEditors: BG7ZAG bg7zag@qq.com
- * @LastEditTime: 2023-08-17
+ * @LastEditors: BG7ZAG bg7zag@gmail.com
+ * @LastEditTime: 2023-08-30
 -->
 <script lang="ts" setup>
 import { ElOption, ElSelect } from 'element-plus'
@@ -110,14 +110,17 @@ const showList = computed(() => {
         </li>
       </ul>
 
-      <ElSelect class="bncra-select" v-model="select" placeholder="Select" size="large">
-        <ElOption
-          v-for="(item, key) in options"
-          :key="key"
-          :label="`${key == 'all' ? $t('home.bncra.all') : item.name}(${item.value?.score ?? 0})`"
-          :value="key"
-        />
-      </ElSelect>
+      <div class="bncra-select">
+        <div class="text-sm text-gray-500">请选择BnCRA：</div>
+        <ElSelect v-model="select" placeholder="Select" size="large">
+          <ElOption
+            v-for="(item, key) in options"
+            :key="key"
+            :label="`${key == 'all' ? $t('home.bncra.all') : item.name}(${item.value?.score ?? 0})`"
+            :value="key"
+          />
+        </ElSelect>
+      </div>
 
       <BnCRATableVue v-for="(item, key) in showList" :key="key" :formData="item" />
     </div>
@@ -155,6 +158,7 @@ const showList = computed(() => {
 
       .bncra-select {
         display: flex;
+        align-items: center;
       }
     }
   }
