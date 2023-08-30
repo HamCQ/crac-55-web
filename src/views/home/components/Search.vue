@@ -1,11 +1,15 @@
 <!--
- * @Description: 
+ * @Description: 搜索模块
  * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-14
  * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-29
+ * @LastEditTime: 2023-08-30
 -->
 <script lang="ts" setup>
+import { ElMessage } from 'element-plus'
+import { useI18n } from 'vue-i18n'
+
+import DatePickerYear from '@/components/DatePickerYear/DatePickerYear.vue'
 import { useConfigState } from '@/store/config'
 import { LANGUAGE_TYPE, useGlobalState } from '@/store/global'
 import { useHomeStore } from '@/store/home'
@@ -16,8 +20,13 @@ const homeStore = useHomeStore()!
 
 const { config } = useConfigState()
 const { language } = useGlobalState()
+const { t } = useI18n()
 
 const onSearch = () => {
+  if (!homeStore.searchQuery.callsign?.trim()) {
+    ElMessage.warning(t('home.searchPlaceholder'))
+    return
+  }
   homeStore.onSearch({ callsign: homeStore.searchQuery.callsign })
 }
 
@@ -51,17 +60,19 @@ const localConfig = computed(() => {
         <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900 hs-title">
           {{ localConfig.sub_title }}
         </h1>
-        <div class="flex w-full md:justify-start justify-center items-end">
-          <div class="relative mr-4 md:w-full lg:w-full xl:w-1/2 w-2/4 hs-input-block">
+        <div class="flex w-full md:justify-start justify-center items-end hs-input-main">
+          <div class="flex relative mx-4 md:w-full lg:w-full xl:w-1/2 w-full hs-input-block">
             <input
               type="text"
               :placeholder="$t('home.searchPlaceholder')"
               id="hero-field"
               name="callsign"
               class="w-full bg-gray-100 rounded border bg-opacity-50 border-gray-300 focus:ring-2 focus:ring-purple-200 focus:bg-transparent focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              style="height: 40px"
               v-model="homeStore.searchQuery.callsign"
               @keyup.enter="onSearch"
             />
+            <DatePickerYear />
           </div>
           <button
             class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
@@ -70,7 +81,7 @@ const localConfig = computed(() => {
             {{ $t('home.searchBtn') }}
           </button>
         </div>
-        <p class="text-sm mt-2 text-gray-500 mb-8 w-full hs-tip">{{ $t('home.searchTip') }}</p>
+        <p class="text-sm mt-2 text-gray-500 mb-8 w-full ml-4 hs-tip">{{ $t('home.searchTip') }}</p>
       </div>
 
       <div class="lg:max-w-lg lg:w-full md:w-1/2 search-img">
@@ -92,6 +103,11 @@ const localConfig = computed(() => {
       width: 100%;
       padding: 0;
 
+      .hs-input-main {
+        flex-direction: column;
+        align-items: center;
+      }
+
       > .items-center {
         align-items: center;
         width: 100%;
@@ -101,11 +117,13 @@ const localConfig = computed(() => {
 
         .hs-input-block {
           flex: 1;
+          margin-top: 20px;
         }
 
         button {
           padding-right: 20px;
           padding-left: 20px;
+          margin-top: 20px;
           white-space: nowrap;
         }
 
@@ -121,10 +139,6 @@ const localConfig = computed(() => {
   }
 
   .hs-tip {
-    margin-top: 20px;
-  }
-
-  #hero-field {
     margin-top: 20px;
   }
 }

@@ -103,7 +103,8 @@ export default {
     updateTime: '最近更新时间：',
     total: '总数：',
     callSign: '呼号',
-    points: '得分'
+    points: '得分',
+    back: '返回'
   },
 
   archive: {
