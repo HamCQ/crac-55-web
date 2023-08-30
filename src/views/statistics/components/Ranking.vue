@@ -3,13 +3,14 @@
  * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-17
  * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-21
+ * @LastEditTime: 2023-08-30
 -->
 <script lang="ts" setup>
 import { computed, onMounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 
+import DatePickerYear from '@/components/DatePickerYear/DatePickerYear.vue'
 import { RANKING_TYPE } from '@/enum/rankingEnum'
 
 import { top5RankAnalyse } from '../../../api/55/analyse'
@@ -50,20 +51,24 @@ const getData = async () => {
   ranking.value = res
 }
 
-onMounted(() => {
-  getData()
-})
+watch(
+  () => props.year,
+  () => {
+    if (props.year) {
+      getData()
+    }
+  },
+  {
+    immediate: true
+  }
+)
 
 const router = useRouter()
 /**
  * 跳转排行列表
  */
 const goto = (type: RANKING_TYPE) => {
-  let path = '/ranking?type=' + type
-  if (props.year) {
-    path = path + '&year=' + props.year
-  }
-  router.push(path)
+  router.push('/ranking?type=' + type)
 }
 </script>
 
@@ -74,9 +79,12 @@ const goto = (type: RANKING_TYPE) => {
         <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">
           {{ $t('statistic.ranking.title') }}
         </h1>
-        <p class="lg:w-2/3 mx-auto leading-relaxed text-base text-gray-500">
-          {{ `${$t('statistic.ranking.updateTime')}${ranking.update_time ?? ''}` }}
-        </p>
+        <div class="flex justify-center items-center lg:w-2/3 mx-auto mt-5">
+          <p class="leading-relaxed text-base text-gray-500">
+            {{ `${$t('statistic.ranking.updateTime')}${ranking.update_time ?? ''}` }}
+          </p>
+          <DatePickerYear />
+        </div>
       </div>
 
       <div class="flex justify-center flex-wrap -m-4" id="country-tabs-contents">

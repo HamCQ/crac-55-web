@@ -3,7 +3,7 @@
  * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-14
  * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-21
+ * @LastEditTime: 2023-08-29
  */
 declare namespace Search55V1Types {
   export type IRequest = {
@@ -22,6 +22,11 @@ declare namespace Search55V1Types {
     }
     bncra: Item
     bxcra: Item[]
+    rank_info: {
+      cra: number
+      diff_cra: number
+      is_cn: boolean
+    }
   }
 
   type BAND = '6M' | '10M' | '12M' | '15M' | '17M' | '20M' | '30M' | '40M' | '80M' | '160M'

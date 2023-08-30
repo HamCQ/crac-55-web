@@ -3,7 +3,7 @@
  * @Author: BG7ZAG bg7zag@qq.com
  * @Date: 2023-08-11
  * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-20
+ * @LastEditTime: 2023-08-29
 -->
 <script setup lang="ts">
 import { ElConfigProvider } from 'element-plus'
@@ -17,6 +17,7 @@ import { LANGUAGE_TYPE, useGlobalState } from './store/global'
 // 切换语言
 const { locale } = useI18n()
 const { language } = useGlobalState()
+
 watch(language, (val) => {
   locale.value = val
 })

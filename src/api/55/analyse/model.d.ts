@@ -3,11 +3,11 @@
  * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-14
  * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-21
+ * @LastEditTime: 2023-08-29
  */
 declare namespace TotalAnalyseTypes {
   export type IRequest = {
-    year?: string
+    year?: string | number
   }
 
   export type IResponse = {

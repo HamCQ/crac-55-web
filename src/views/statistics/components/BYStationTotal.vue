@@ -165,11 +165,23 @@ const getList = async () => {
 }
 
 onMounted(() => {
-  getList()
   if (chartBy09.value) {
     myChart = echarts.init(chartBy09.value)
   }
 })
+watch(
+  () => props.year,
+  () => {
+    if (props.year) {
+      nextTick(() => {
+        getList()
+      })
+    }
+  },
+  {
+    immediate: true
+  }
+)
 </script>
 
 <template>

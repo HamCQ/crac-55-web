@@ -1,13 +1,15 @@
 <!--
- * @Description: 
+ * @Description: 历年活动
  * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-11
  * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-21
+ * @LastEditTime: 2023-08-30
 -->
 <script lang="ts" setup>
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
+
+import { useConfigState } from '@/store/config'
 
 defineOptions({ name: 'ArchivePage' })
 
@@ -29,11 +31,14 @@ const list = computed<ArchiveType[]>(() => [
 
 const router = useRouter()
 
+const { changeYear } = useConfigState()
+
 /**
  * 跳转首页
  */
 const goHome = (item: ArchiveType) => {
-  router.push('/?year=' + item.year)
+  changeYear(item.year?.toString())
+  router.push('/statistics')
 }
 </script>
 
