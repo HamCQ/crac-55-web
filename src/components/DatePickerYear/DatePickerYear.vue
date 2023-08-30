@@ -22,7 +22,7 @@ const { currentYear, changeYear, disabledDate } = useConfigState()
       style="width: 100%"
       placeholder="选择年份"
       size="large"
-      :model-value="dayjs().set('y', currentYear).valueOf()"
+      :model-value="currentYear ? dayjs().set('y', parseInt(currentYear)).valueOf() : undefined"
       @update:model-value="(e) => changeYear(dayjs(e).get('y').toString())"
       :clearable="false"
       :disabled-date="disabledDate"

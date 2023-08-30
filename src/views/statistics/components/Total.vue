@@ -6,23 +6,31 @@
  * @LastEditTime: 2023-08-30
 -->
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { useAsyncState } from '@vueuse/core'
 
 import { totalAnalyse } from '../../../api/55/analyse'
 
 defineOptions({ name: 'StatisticTotal' })
 
-const total = ref<TotalAnalyseTypes.IResponse>({} as TotalAnalyseTypes.IResponse)
 const props = defineProps<{ year?: string }>()
-const getData = async () => {
-  const res = await totalAnalyse({ year: props.year ?? '' })
-  total.value = res
-}
+
+const { execute, isLoading, state } = useAsyncState(
+  totalAnalyse,
+  {
+    log_num: 0,
+    single_call_num: 0,
+    award_num: 0
+  },
+  {
+    immediate: false
+  }
+)
+
 watch(
   () => props.year,
   () => {
     if (props.year) {
-      getData()
+      execute(0, { year: props.year ?? '' })
     }
   },
   {
@@ -34,22 +42,22 @@ watch(
 <template>
   <section class="text-gray-600 body-font statistic-total">
     <div class="container px-5 pt-20 pb-24 mx-auto">
-      <div class="flex flex-wrap -m-4 text-center">
+      <div class="flex flex-wrap -m-4 text-center" v-loading="isLoading">
         <div class="p-4 sm:w-1/3 w-1/3">
           <h2 class="title-font font-medium sm:text-4xl text-3xl text-gray-900">
-            {{ total.log_num ?? 0 }}
+            {{ state.log_num ?? 0 }}
           </h2>
           <p class="leading-relaxed">{{ $t('statistic.total.logNum') }}</p>
         </div>
         <div class="p-4 sm:w-1/3 w-1/3">
           <h2 class="title-font font-medium sm:text-4xl text-3xl text-gray-900">
-            {{ total.single_call_num ?? 0 }}
+            {{ state.single_call_num ?? 0 }}
           </h2>
           <p class="leading-relaxed">{{ $t('statistic.total.singleCallNum') }}</p>
         </div>
         <div class="p-4 sm:w-1/3 w-1/3">
           <h2 class="title-font font-medium sm:text-4xl text-3xl text-gray-900">
-            {{ total.award_num ?? 0 }}
+            {{ state.award_num ?? 0 }}
           </h2>
           <p class="leading-relaxed">{{ $t('statistic.total.awardNum') }}</p>
         </div>

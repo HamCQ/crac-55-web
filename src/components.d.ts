@@ -10,7 +10,6 @@ declare module 'vue' {
     BnCRAIcon: typeof import('./components/BnCRATable/BnCRAIcon.vue')['default']
     BnCRATable: typeof import('./components/BnCRATable/BnCRATable.vue')['default']
     DatePickerYear: typeof import('./components/DatePickerYear/DatePickerYear.vue')['default']
-    ElDatePicker: typeof import('element-plus/es')['ElDatePicker']
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
