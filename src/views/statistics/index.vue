@@ -3,13 +3,13 @@
  * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-17
  * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-30
+ * @LastEditTime: 2023-08-31
 -->
 <script lang="ts" setup>
 import { useAsyncState } from '@vueuse/core'
-import { useRoute } from 'vue-router'
 
 import { bncraBarchartAnalyse } from '@/api/55/analyse'
+import DatePickerYear from '@/components/DatePickerYear/DatePickerYear.vue'
 import { useConfigState } from '@/store/config'
 
 import BnCRATotal from './components/BnCRATotal.vue'
@@ -44,6 +44,11 @@ watch(
 
 <template>
   <div class="statistics">
+    <div class="flex justify-end items-center">
+      <span class="text-base text-gray-500 mr-3">{{ $t('statistic.selectYear') }}</span>
+      <DatePickerYear />
+    </div>
+
     <!-- 统计 -->
     <Total :year="currentYear" />
     <!-- TOP5 -->

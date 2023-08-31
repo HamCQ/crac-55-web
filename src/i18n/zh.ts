@@ -51,6 +51,7 @@ export default {
   },
 
   statistic: {
+    selectYear: '请选择年份：',
     total: {
       logNum: 'QSO数量',
       singleCallNum: '独立呼号',
