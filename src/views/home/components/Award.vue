@@ -2,8 +2,8 @@
  * @Description: 获奖
  * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-15
- * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-26
+ * @LastEditors: BG7ZAG bg7zag@qq.com
+ * @LastEditTime: 2023-08-31
 -->
 <script lang="ts" setup>
 import '@lottiefiles/lottie-player'
@@ -120,7 +120,7 @@ onBeforeUnmount(() => {
       <section class="text-gray-600 body-font">
         <div class="container px-5 py-8 mx-auto">
           <div class="flex flex-wrap -m-4 text-center">
-            <div class="p-4 sm:w-1/2 w-1/2">
+            <div class="p-4 w-full">
               <button
                 class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg whitespace-nowrap"
               >
@@ -132,7 +132,7 @@ onBeforeUnmount(() => {
                 >
               </button>
             </div>
-            <div class="p-4 sm:w-1/2 w-1/2">
+            <!-- <div class="p-4 sm:w-1/2 w-1/2">
               <button
                 class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg whitespace-nowrap"
               >
@@ -145,7 +145,7 @@ onBeforeUnmount(() => {
                   {{ $t('home.award.Apply') }}</a
                 >
               </button>
-            </div>
+            </div> -->
           </div>
         </div>
       </section>

@@ -2,8 +2,8 @@
  * @Description: 每年赞助商
  * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-27
- * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-27
+ * @LastEditors: BG7ZAG bg7zag@qq.com
+ * @LastEditTime: 2023-08-31
 -->
 <script lang="ts" setup>
 import { ElCard } from 'element-plus'
@@ -12,14 +12,22 @@ import { LANGUAGE_TYPE, useGlobalState } from '@/store/global'
 
 defineOptions({ name: 'AcknowledgementItem' })
 
-defineProps<{
+interface Props {
   formData: {
     year: number
-    list: { name: string }[]
+    list: { name: string; url: string }[]
   }
-}>()
+}
+
+defineProps<Props>()
 
 const { language } = useGlobalState()
+
+const onClick = (item: Props['formData']['list'][0]) => {
+  if (item.url) {
+    window.open(item.url, '_blank')
+  }
+}
 </script>
 
 <template>
@@ -34,7 +42,9 @@ const { language } = useGlobalState()
       </h2>
       <ul class="grid acknowledgement-list">
         <li class="leading-relaxed" v-for="item in formData.list" :key="item.name">
-          <ElCard class="cursor-pointer">{{ item.name }}</ElCard>
+          <ElCard class="cursor-pointer" shadow="hover" @click="onClick(item)">{{
+            item.name
+          }}</ElCard>
         </li>
       </ul>
     </div>
