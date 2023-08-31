@@ -2,8 +2,8 @@
  * @Description: 
  * @Author: zyg0121 zhouyiguo2012@qq.com
  * @Date: 2023-08-20
- * @LastEditors: zyg0121 zhouyiguo2012@qq.com
- * @LastEditTime: 2023-08-20
+ * @LastEditors: BG7ZAG bg7zag@qq.com
+ * @LastEditTime: 2023-08-31
 -->
 <script lang="tsx" setup>
 import { ElTooltip } from 'element-plus'
@@ -102,6 +102,13 @@ const bands = ['160M', '80M', '40M', '30M', '20M', '17M', '15M', '12M', '10M', '
             </tr>
           </tbody>
         </table>
+
+        <div class="bncra-tips">
+          <div class="flex items-center text-sm bncra-tip-item">
+            <DoubleLeft />
+            左滑查看更多
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -113,6 +120,9 @@ const bands = ['160M', '80M', '40M', '30M', '20M', '17M', '15M', '12M', '10M', '
   justify-content: center;
 }
 
+.bncra-tips {
+  display: none;
+}
 /* stylelint-disable-next-line media-feature-range-notation */
 @media screen and (max-width: 992px) {
   .bncra-table {
@@ -127,6 +137,15 @@ const bands = ['160M', '80M', '40M', '30M', '20M', '17M', '15M', '12M', '10M', '
 
         > table {
           width: fit-content;
+        }
+
+        .bncra-tips {
+          display: flex;
+          margin: 8px 0;
+
+          .bncra-tip-item {
+            padding-left: calc(50vw - 7em);
+          }
         }
       }
     }

@@ -2,8 +2,8 @@
  * @Description: TOP5排行
  * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-17
- * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-30
+ * @LastEditors: BG7ZAG bg7zag@qq.com
+ * @LastEditTime: 2023-08-31
 -->
 <script lang="ts" setup>
 import { computed, onMounted, ref } from 'vue'
@@ -80,7 +80,7 @@ const goto = (type: RANKING_TYPE) => {
           {{ $t('statistic.ranking.title') }}
         </h1>
         <div class="flex justify-center items-center lg:w-2/3 mx-auto mt-5">
-          <p class="leading-relaxed text-base text-gray-500">
+          <p class="leading-relaxed text-base text-gray-500 mr-5">
             {{ `${$t('statistic.ranking.updateTime')}${ranking.update_time ?? ''}` }}
           </p>
           <DatePickerYear />
