@@ -2,8 +2,8 @@
  * @Description: 英文配置
  * @Author: BG7ZAG bg7zag@qq.com
  * @Date: 2023-08-11
- * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-30
+ * @LastEditors: BG7ZAG bg7zag@qq.com
+ * @LastEditTime: 2023-08-31
  */
 export default {
   layout: {
@@ -123,5 +123,9 @@ export default {
     title:
       'Thank you to the following units and organizations for providing strong support to this event',
     sponsors: 'Sponsors in '
+  },
+
+  notfound: {
+    title: '404 Lost in space'
   }
 }

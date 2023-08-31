@@ -2,8 +2,8 @@
  * @Description: 404页面
  * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-16
- * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-26
+ * @LastEditors: BG7ZAG bg7zag@qq.com
+ * @LastEditTime: 2023-08-31
 -->
 <script lang="ts" setup>
 import '@lottiefiles/lottie-player'
@@ -23,7 +23,7 @@ const VITE_NOT_FOUND_LOTTIE = import.meta.env.VITE_NOT_FOUND_LOTTIE
       loop=""
       autoplay=""
     ></lottie-player>
-    <h2 class="title-font font-medium sm:text-3xl text-2xl text-gray-900">404 NotFound</h2>
+    <div class="leading-relaxed">{{ $t('notfound.title') }}</div>
   </div>
 </template>
 

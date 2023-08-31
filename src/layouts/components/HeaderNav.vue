@@ -2,8 +2,8 @@
  * @Description: 菜单
  * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-14
- * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-29
+ * @LastEditors: BG7ZAG bg7zag@qq.com
+ * @LastEditTime: 2023-08-31
 -->
 <script lang="ts" setup>
 import { useI18n } from 'vue-i18n'
@@ -82,11 +82,11 @@ const menus = computed(() => [
     path: '/onlineStatus'
   },
   // 历年活动
-  {
-    show: true,
-    title: t('layout.header.archive'),
-    path: '/archive'
-  },
+  // {
+  //   show: true,
+  //   title: t('layout.header.archive'),
+  //   path: '/archive'
+  // },
   // 活动说明
   {
     show: true,

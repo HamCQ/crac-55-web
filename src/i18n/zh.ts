@@ -2,8 +2,8 @@
  * @Description: 中文配置
  * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-11
- * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-29
+ * @LastEditors: BG7ZAG bg7zag@qq.com
+ * @LastEditTime: 2023-08-31
  */
 
 export default {
@@ -122,5 +122,9 @@ export default {
   acknowledgement: {
     title: '感谢以下单位和组织向本活动提供大力支持',
     sponsors: '年赞助商 '
+  },
+
+  notfound: {
+    title: '404 您的信号已飘向太空'
   }
 }
