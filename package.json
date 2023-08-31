@@ -6,7 +6,7 @@
     "dev": "vite --mode development --host",
     "build:dev": "run-p type-check && vite build --base=/ --mode development",
     "build:test": "run-p type-check  && vite build --base=/ --mode testing",
-    "build:prod": "run-p type-check  && vite build --base=/ --mode production",
+    "build:prod": "run-p type-check  && vite build --base=/partner/crac --mode production",
     "preview": "vite preview",
     "test:unit": "vitest",
     "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
