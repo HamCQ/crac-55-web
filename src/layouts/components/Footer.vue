@@ -3,11 +3,18 @@
  * @Author: BG7ZAG bg7zag@qq.com
  * @Date: 2023-08-11
  * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-26
+ * @LastEditTime: 2023-08-31
 -->
 <script lang="ts" setup>
+import { useRouter } from 'vue-router'
+
 defineOptions({ name: 'LayoutFooter' })
 const year = new Date().getFullYear()
+
+const router = useRouter()
+const goto = (path: string) => {
+  router.push(path)
+}
 </script>
 
 <template>
@@ -36,7 +43,7 @@ const year = new Date().getFullYear()
           $t('layout.footer.contributions')
         }}</a>
 
-        <a class="text-sm text-gray-500 pl-4" href="/acknowledgement">{{
+        <a class="text-sm text-gray-500 pl-4" @click="goto('/acknowledgement')">{{
           $t('layout.footer.acknowledgement')
         }}</a>
       </p>
