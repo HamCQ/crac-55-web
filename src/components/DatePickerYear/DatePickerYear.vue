@@ -3,7 +3,7 @@
  * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-30
  * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-30
+ * @LastEditTime: 2023-08-31
 -->
 <script lang="ts" setup>
 import { dayjs, ElDatePicker } from 'element-plus'
@@ -22,6 +22,7 @@ const { currentYear, changeYear, disabledDate } = useConfigState()
       style="width: 100%"
       placeholder="选择年份"
       size="large"
+      :editable="false"
       :model-value="currentYear ? dayjs().set('y', parseInt(currentYear)).valueOf() : undefined"
       @update:model-value="(e) => changeYear(dayjs(e).get('y').toString())"
       :clearable="false"

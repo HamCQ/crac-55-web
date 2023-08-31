@@ -2,15 +2,14 @@
  * @Description: TOP5排行
  * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-17
- * @LastEditors: BG7ZAG bg7zag@qq.com
+ * @LastEditors: BG7ZAG bg7zag@gmail.com
  * @LastEditTime: 2023-08-31
 -->
 <script lang="ts" setup>
-import { computed, onMounted, ref } from 'vue'
+import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 
-import DatePickerYear from '@/components/DatePickerYear/DatePickerYear.vue'
 import { RANKING_TYPE } from '@/enum/rankingEnum'
 
 import { top5RankAnalyse } from '../../../api/55/analyse'
@@ -79,11 +78,10 @@ const goto = (type: RANKING_TYPE) => {
         <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">
           {{ $t('statistic.ranking.title') }}
         </h1>
-        <div class="flex justify-center items-center lg:w-2/3 mx-auto mt-5">
-          <p class="leading-relaxed text-base text-gray-500 mr-5">
+        <div class="flex justify-center items-center lg:w-2/3 mx-auto mt-5 ranking-subtitle">
+          <p class="leading-relaxed text-base text-gray-500 ml-5 ranking-time">
             {{ `${$t('statistic.ranking.updateTime')}${ranking.update_time ?? ''}` }}
           </p>
-          <DatePickerYear />
         </div>
       </div>
 
