@@ -36,7 +36,7 @@ pnpm run build:dev
 # test
 pnpm run build:test
 # prod
-npm run build:prod
+pnpm run build:prod
 ```
 
 ### [Vitest](https://vitest.dev/) 单元测试
