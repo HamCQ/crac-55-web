@@ -3,7 +3,7 @@
  * @Author: BG7ZAG bg7zag@qq.com
  * @Date: 2023-08-11
  * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-26
+ * @LastEditTime: 2023-08-31
 -->
 <script lang="ts" setup>
 defineOptions({ name: 'OnlineStatus' })
@@ -159,13 +159,15 @@ const intervalOptions = computed(() => [
 </script>
 
 <template>
-  <div class="text-center mb-20">
+  <div class="text-center mb-20 online-status-title">
     <h1 class="sm:text-3xl text-2xl font-medium text-center title-font text-gray-900 mb-4">
       {{ $t('onlineSlot.title') }}
     </h1>
-    <div class="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto">
-      <label for="refreshInterval">{{ $t('onlineSlot.refrash') }}</label>
-      <ElSelect v-model="selectedInterval" id="refreshInterval" style="width: 150px">
+    <div class="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto refresh-interval">
+      <label for="refreshInterval" class="text-sm text-gray-500">{{
+        $t('onlineSlot.refrash')
+      }}</label>
+      <ElSelect v-model="selectedInterval" id="refreshInterval" size="large">
         <ElOption
           v-for="item in intervalOptions"
           :key="item.value"
@@ -243,8 +245,22 @@ const intervalOptions = computed(() => [
   }
 }
 
+.refresh-interval {
+  margin-top: 20px;
+}
+
 /* stylelint-disable-next-line media-feature-range-notation */
 @media screen and (max-width: 992px) {
+  .online-status-title {
+    margin-bottom: 30px;
+  }
+
+  .refresh-interval {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+  }
+
   .bn-cra {
     max-width: 100vw;
     overflow: hidden;

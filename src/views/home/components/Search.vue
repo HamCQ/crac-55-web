@@ -2,7 +2,7 @@
  * @Description: 搜索模块
  * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-14
- * @LastEditors: BG7ZAG bg7zag@qq.com
+ * @LastEditors: BG7ZAG bg7zag@gmail.com
  * @LastEditTime: 2023-08-31
 -->
 <script lang="ts" setup>
@@ -96,8 +96,11 @@ const localConfig = computed(() => {
 </template>
 
 <style lang="scss" scoped>
+#hero-field {
+  margin-right: 20px;
+}
 /* stylelint-disable-next-line media-feature-range-notation */
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 1280px) {
   .home-search {
     .home-search-block {
       width: 100%;
@@ -118,6 +121,10 @@ const localConfig = computed(() => {
         .hs-input-block {
           flex: 1;
           margin-top: 20px;
+
+          #hero-field {
+            margin-right: 0;
+          }
         }
 
         button {
