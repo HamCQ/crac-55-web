@@ -3,7 +3,7 @@
  * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-19
  * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-26
+ * @LastEditTime: 2023-08-31
 -->
 <script lang="ts" setup>
 import { useMediaQuery, useWindowSize } from '@vueuse/core'
@@ -79,7 +79,7 @@ watch(width, () => {
 })
 watchEffect(() => {
   // 设置echarts数据
-  if (chartBy09.value && myChart) {
+  if (chartBy09.value) {
     const xAxis = [
       'B0CRA',
       'B1CRA',
@@ -148,13 +148,19 @@ watchEffect(() => {
       ]
     }
 
+    if (!myChart) {
+      initChat()
+    }
     myChart.setOption(option)
   }
 })
 
+const initChat = () => {
+  myChart = echarts.init(chartBy09.value)
+}
 onMounted(() => {
   if (chartBy09.value) {
-    myChart = echarts.init(chartBy09.value)
+    initChat()
   }
 })
 </script>

@@ -76,7 +76,7 @@ watch(width, () => {
 })
 watchEffect(() => {
   // 设置echarts数据
-  if (chartBy09.value && myChart) {
+  if (chartBy09.value) {
     const xAxis = [
       t('statistic.BYStationTotal.zone0'),
       t('statistic.BYStationTotal.zone1'),
@@ -145,6 +145,9 @@ watchEffect(() => {
       ]
     }
 
+    if (!myChart) {
+      initChat()
+    }
     myChart.setOption(option)
   }
 })
@@ -164,18 +167,20 @@ const getList = async () => {
   }
 }
 
+const initChat = () => {
+  myChart = echarts.init(chartBy09.value)
+}
+
 onMounted(() => {
   if (chartBy09.value) {
-    myChart = echarts.init(chartBy09.value)
+    initChat()
   }
 })
 watch(
   () => props.year,
   () => {
     if (props.year) {
-      nextTick(() => {
-        getList()
-      })
+      getList()
     }
   },
   {
