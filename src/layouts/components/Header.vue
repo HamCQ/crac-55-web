@@ -3,7 +3,7 @@
  * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-11
  * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-30
+ * @LastEditTime: 2023-09-01
 -->
 <script lang="ts" setup>
 import { ChineseOne, English, MenuUnfoldOne } from '@icon-park/vue-next'
@@ -73,7 +73,7 @@ const onCloseDrawer = () => {
 .layout-header {
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 1000;
   display: flex;
   flex-shrink: 0;
   justify-content: flex-end;
