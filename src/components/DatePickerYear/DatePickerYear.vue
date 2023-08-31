@@ -16,7 +16,7 @@ const { currentYear, changeYear, disabledDate } = useConfigState()
 </script>
 
 <template>
-  <div class="date-picker-year ml-5">
+  <div class="date-picker-year">
     <ElDatePicker
       type="year"
       style="width: 100%"

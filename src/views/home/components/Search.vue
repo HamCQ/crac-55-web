@@ -2,8 +2,8 @@
  * @Description: 搜索模块
  * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-14
- * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-30
+ * @LastEditors: BG7ZAG bg7zag@qq.com
+ * @LastEditTime: 2023-08-31
 -->
 <script lang="ts" setup>
 import { ElMessage } from 'element-plus'
@@ -61,18 +61,18 @@ const localConfig = computed(() => {
           {{ localConfig.sub_title }}
         </h1>
         <div class="flex w-full md:justify-start justify-center items-end hs-input-main">
-          <div class="flex relative mx-4 md:w-full lg:w-full xl:w-1/2 w-full hs-input-block">
+          <div class="flex relative md:w-full lg:w-full xl:w-1/2 w-full hs-input-block">
+            <DatePickerYear />
             <input
               type="text"
               :placeholder="$t('home.searchPlaceholder')"
               id="hero-field"
               name="callsign"
-              class="w-full bg-gray-100 rounded border bg-opacity-50 border-gray-300 focus:ring-2 focus:ring-purple-200 focus:bg-transparent focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              class="ml-5 w-full bg-gray-100 rounded border bg-opacity-50 border-gray-300 focus:ring-2 focus:ring-purple-200 focus:bg-transparent focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               style="height: 40px"
               v-model="homeStore.searchQuery.callsign"
               @keyup.enter="onSearch"
             />
-            <DatePickerYear />
           </div>
           <button
             class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
@@ -81,7 +81,7 @@ const localConfig = computed(() => {
             {{ $t('home.searchBtn') }}
           </button>
         </div>
-        <p class="text-sm mt-2 text-gray-500 mb-8 w-full ml-4 hs-tip">{{ $t('home.searchTip') }}</p>
+        <p class="text-sm mt-2 text-gray-500 mb-8 w-full hs-tip">{{ $t('home.searchTip') }}</p>
       </div>
 
       <div class="lg:max-w-lg lg:w-full md:w-1/2 search-img">

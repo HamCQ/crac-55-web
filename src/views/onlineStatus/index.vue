@@ -203,20 +203,23 @@ const intervalOptions = computed(() => [
           </li>
         </ul>
 
-        <ElSelect class="bncra-select" v-model="select" placeholder="Select" size="large">
-          <ElOption
-            v-for="(item, key) in options"
-            :key="key"
-            :label="`${key == 'all' ? $t('home.bncra.all') : item.name}(${
-              key == 'all'
-                ? item.value instanceof Number
-                  ? item.value
-                  : 0
-                : item.value?.score ?? 0
-            })`"
-            :value="key"
-          />
-        </ElSelect>
+        <div class="bncra-select">
+          <div class="text-sm text-gray-500">请选择BnCRA：</div>
+          <ElSelect v-model="select" placeholder="Select" size="large">
+            <ElOption
+              v-for="(item, key) in options"
+              :key="key"
+              :label="`${key == 'all' ? $t('home.bncra.all') : item.name}(${
+                key == 'all'
+                  ? item.value instanceof Number
+                    ? item.value
+                    : 0
+                  : item.value?.score ?? 0
+              })`"
+              :value="key"
+            />
+          </ElSelect>
+        </div>
         <BnCRATableVue v-for="(item, key) in showList" :key="key" :formData="item" />
       </div>
     </section>
@@ -258,6 +261,7 @@ const intervalOptions = computed(() => [
 
       .bncra-select {
         display: flex;
+        align-items: center;
       }
     }
   }
