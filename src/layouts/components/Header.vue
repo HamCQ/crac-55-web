@@ -2,11 +2,12 @@
  * @Description: 头部
  * @Author: BG7ZAG bg7zag@gmail.com
  * @Date: 2023-08-11
- * @LastEditors: BG7ZAG bg7zag@gmail.com
+ * @LastEditors: BG7ZAG bg7zag@qq.com
  * @LastEditTime: 2023-09-01
 -->
 <script lang="ts" setup>
 import { ChineseOne, English, MenuUnfoldOne } from '@icon-park/vue-next'
+import { useEventListener } from '@vueuse/core'
 import { ElDrawer, ElIcon, ElTooltip } from 'element-plus'
 
 import { LANGUAGE_TYPE, useGlobalState } from '@/store/global'
@@ -17,7 +18,17 @@ defineOptions({ name: 'LayoutHeader' })
 
 const { language, changeLanguage } = useGlobalState()
 
+const visible = ref(false)
+
 const drawer = ref(false)
+
+// 监听移动端触摸隐藏提示
+useEventListener(document, 'touchend', () => {
+  if (visible.value) {
+    visible.value = false
+  }
+})
+
 /**
  * 关闭遮罩层
  */
@@ -45,12 +56,15 @@ const onCloseDrawer = () => {
         class="box-item"
         :content="language === LANGUAGE_TYPE.CHINESE ? 'English' : '中文'"
         placement="bottom"
+        :visible="visible"
       >
         <English
           v-if="language === LANGUAGE_TYPE.CHINESE"
           class="layout-language"
           theme="outline"
           size="24"
+          @mouseenter="visible = true"
+          @mouseleave="visible = false"
           @click="changeLanguage(LANGUAGE_TYPE.ENGLISH)"
         />
         <ChineseOne
@@ -58,6 +72,8 @@ const onCloseDrawer = () => {
           class="layout-language"
           theme="outline"
           size="24"
+          @mouseenter="visible = true"
+          @mouseleave="visible = false"
           @click="changeLanguage(LANGUAGE_TYPE.CHINESE)"
         />
       </ElTooltip>

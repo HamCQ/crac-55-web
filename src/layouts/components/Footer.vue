@@ -2,12 +2,19 @@
  * @Description: 底部
  * @Author: BG7ZAG bg7zag@qq.com
  * @Date: 2023-08-11
- * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-26
+ * @LastEditors: BG7ZAG bg7zag@qq.com
+ * @LastEditTime: 2023-09-01
 -->
 <script lang="ts" setup>
+import { useRouter } from 'vue-router'
+
 defineOptions({ name: 'LayoutFooter' })
 const year = new Date().getFullYear()
+
+const router = useRouter()
+const goto = (path: string) => {
+  router.push(path)
+}
 </script>
 
 <template>
@@ -26,17 +33,23 @@ const year = new Date().getFullYear()
       </a>
 
       <span>
-        © <a href="http://www.crac.org.cn/" target="_blank">{{ year }} CRAC </a>
+        ©
+        <a class="cursor-pointer" href="http://www.crac.org.cn/" target="_blank"
+          >{{ year }} CRAC
+        </a>
       </span>
 
       <p
         class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4"
       >
-        <a class="text-sm text-gray-500" href="https://forum.hamcq.cn/d/174" target="_blank">{{
-          $t('layout.footer.contributions')
-        }}</a>
+        <a
+          class="text-sm text-gray-500 cursor-pointer"
+          href="https://forum.hamcq.cn/d/174"
+          target="_blank"
+          >{{ $t('layout.footer.contributions') }}</a
+        >
 
-        <a class="text-sm text-gray-500 pl-4" href="/acknowledgement">{{
+        <a class="text-sm text-gray-500 pl-4 cursor-pointer" @click="goto('/acknowledgement')">{{
           $t('layout.footer.acknowledgement')
         }}</a>
       </p>
@@ -48,5 +61,11 @@ const year = new Date().getFullYear()
 .layout-footer {
   flex-shrink: 0;
   background-color: #fff;
+
+  .cursor-pointer {
+    &:hover {
+      color: var(--el-color-primary);
+    }
+  }
 }
 </style>
