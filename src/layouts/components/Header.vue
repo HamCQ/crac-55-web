@@ -89,7 +89,7 @@ const onCloseDrawer = () => {
 .layout-header {
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 1000;
   display: flex;
   flex-shrink: 0;
   justify-content: flex-end;
