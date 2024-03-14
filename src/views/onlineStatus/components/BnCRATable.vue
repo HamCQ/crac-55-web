@@ -6,6 +6,7 @@
  * @LastEditTime: 2023-08-31
 -->
 <script lang="tsx" setup>
+import { DoubleLeft } from '@icon-park/vue-next'
 import { ElTooltip } from 'element-plus'
 
 import BnCRAIcon from '@/components/BnCRATable/BnCRAIcon.vue'
