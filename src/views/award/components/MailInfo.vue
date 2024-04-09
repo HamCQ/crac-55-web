@@ -99,7 +99,13 @@ const submitForm = async (formEl: FormInstance | undefined) => {
     </el-form-item>
 
     <el-form-item>
-      <el-button type="primary" @click="submitForm(ruleFormRef)">{{ t('award.submit') }}</el-button>
+      <el-button
+        style="width: 100px"
+        size="large"
+        type="primary"
+        @click="submitForm(ruleFormRef)"
+        >{{ t('award.submit') }}</el-button
+      >
     </el-form-item>
   </el-form>
 </template>

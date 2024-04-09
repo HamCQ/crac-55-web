@@ -131,7 +131,7 @@ export default {
   },
 
   award: {
-    title: 'Apply for a paper certificate',
+    title: 'Apply for a paper certificate of award',
     stepOne: 'First step: Read the instructions',
     stepOneLine1:
       'You are about to begin the application process for a paper certificate. Please carefully read the following instructions and complete the application steps accordingly.',
@@ -142,7 +142,7 @@ export default {
     stepTwoLine1: 'The following is a communication record you made with',
     stepTwoLine2: 'during this communication activity.',
     stepTwoLine3:
-      'Please search your radio communication log, input the following information, and click verify:',
+      'Please search your radio communication log, input the following information, and click Validate:',
     band: 'Band:',
     model: 'Mode:',
     day: 'Day:',

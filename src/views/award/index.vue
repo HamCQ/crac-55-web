@@ -53,7 +53,7 @@ const onSubmit = (form: RuleForm) => {
       </el-skeleton>
 
       <div class="ml-10 flex-1 mt-20 apply-page-main">
-        <h2 class="font-bold">{{ t('award.stepOne') }}</h2>
+        <h2 class="font-bold sm:text-2xl text-xl">{{ t('award.stepOne') }}</h2>
         <p class="mt-5">
           {{ t('award.stepOneLine1') }}
         </p>
@@ -69,7 +69,7 @@ const onSubmit = (form: RuleForm) => {
           :value="1"
         />
 
-        <h2 class="font-bold mt-5">{{ t('award.stepTwo') }}</h2>
+        <h2 class="font-bold sm:text-2xl text-xl mt-10">{{ t('award.stepTwo') }}</h2>
         <p class="mt-5">
           {{ t('award.stepTwoLine1') }}
           <span class="font-bold" style="color: var(--el-color-primary)">B8CRA</span>
@@ -103,7 +103,7 @@ const onSubmit = (form: RuleForm) => {
           t('award.validate')
         }}</el-button>
 
-        <h2 class="font-bold mt-5">{{ t('award.stepThree') }}</h2>
+        <h2 class="font-bold sm:text-2xl text-xl mt-10">{{ t('award.stepThree') }}</h2>
         <MailInfo @submit="onSubmit" />
       </div>
     </div>
