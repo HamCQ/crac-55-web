@@ -1,10 +1,4 @@
-<!--
- * @Description: 菜单
- * @Author: BG7ZAG bg7zag@gmail.com
- * @Date: 2023-08-14
- * @LastEditors: BG7ZAG bg7zag@qq.com
- * @LastEditTime: 2023-08-31
--->
+<!--菜单-->
 <script lang="ts" setup>
 import { useI18n } from 'vue-i18n'
 import { useRoute, useRouter } from 'vue-router'

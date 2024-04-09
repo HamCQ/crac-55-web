@@ -1,10 +1,4 @@
-/*
- * @Description: 工具
- * @Author: BG7ZAG bg7zag@gmail.com
- * @Date: 2023-08-29
- * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-29
- */
+/** 工具 */
 import { useNavigatorLanguage, useStorage } from '@vueuse/core'
 
 import { LANGUAGE_TYPE } from '@/store/global'
@@ -21,3 +15,8 @@ export const getDefaultLang = () => {
   )
   return languageCache
 }
+
+/**
+ * 校验手机号
+ */
+export const isPhone = (value: string | number) => /^(?:(?:\+|00)86)?1\d{10}$/.test(String(value))

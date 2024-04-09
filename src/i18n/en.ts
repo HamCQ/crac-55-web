@@ -128,5 +128,40 @@ export default {
 
   notfound: {
     title: '404 Lost in space'
+  },
+
+  award: {
+    title: 'Apply for a paper certificate',
+    stepOne: 'First step: Read the instructions',
+    stepOneLine1:
+      'You are about to begin the application process for a paper certificate. Please carefully read the following instructions and complete the application steps accordingly.',
+    stepOneLine2:
+      'The paper certificate is printed free of charge and sent via express delivery. The shipping fee is paid upon receipt, with the recipient covering the cost directly to the courier company. The specific charges are subject to settlement with the courier company.',
+    agreement: 'Got it',
+    stepTwo: 'Second step: Validate the information',
+    stepTwoLine1: 'The following is a communication record you made with',
+    stepTwoLine2: 'during this communication activity.',
+    stepTwoLine3:
+      'Please search your radio communication log, input the following information, and click verify:',
+    band: 'Band:',
+    model: 'Mode:',
+    day: 'Day:',
+    hour: 'Hour:',
+    minute: 'Minute:',
+    validate: 'Validate',
+    stepThree: 'Third step: Please enter your mailing information',
+    userName: `Recipient's name`,
+    phone: 'Phone number',
+    address: 'Mailing address',
+    pleaseEnter: 'Please enter',
+    pleaseEnterPhone: 'Please enter a correct 11-digit phone number.',
+    bindCollectionAgent: 'Designate a recipient',
+    bindCollectionAgentInfo:
+      'If you wish to ship together with someone else, please fill in the callsign of the recipient here.',
+    bindCollectionAgentInfo2: 'The recipient needs to complete the information beforehand.',
+    collectionAgent: `Recipient's callsign (optional)`,
+    submit: 'Submit',
+    pleaseAgreement: 'Please read the instructions and confirm your understanding.',
+    pleaseCheck: 'Please validate the information first'
   }
 }

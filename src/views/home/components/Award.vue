@@ -94,7 +94,9 @@ onBeforeUnmount(() => {
     >
       <!-- 如果屏幕分辨率低于992px 对话框转为全屏 并修改按钮文字不能换行 -->
       <!-- <span>{{ awardData.img_url }}</span> -->
-      <el-image v-if="awardData?.img_url" :src="awardData.img_url" fit="contain" />
+      <div class="text-center">
+        <el-image v-if="awardData?.img_url" :src="awardData.img_url" fit="contain" />
+      </div>
 
       <section class="text-gray-600 body-font">
         <div class="container px-5 py-8 mx-auto">
@@ -120,7 +122,7 @@ onBeforeUnmount(() => {
       <section class="text-gray-600 body-font">
         <div class="container px-5 py-8 mx-auto">
           <div class="flex flex-wrap -m-4 text-center">
-            <div class="p-4 w-full">
+            <div class="p-4 sm:w-1/2 w-1/2">
               <button
                 class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg whitespace-nowrap"
               >
@@ -132,20 +134,18 @@ onBeforeUnmount(() => {
                 >
               </button>
             </div>
-            <!-- <div class="p-4 sm:w-1/2 w-1/2">
+            <div class="p-4 sm:w-1/2 w-1/2">
               <button
                 class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg whitespace-nowrap"
               >
                 <a
                   target="_blank"
-                  :href="`https://api.hamcq.cn/partner/crac/paper/${
-                    searchQuery.year ?? 2023
-                  }?callsign=${searchQuery.callsign}`"
+                  :href="`/award?year=${searchQuery.year ?? 2023}&callsign=${searchQuery.callsign}`"
                 >
                   {{ $t('home.award.Apply') }}</a
                 >
               </button>
-            </div> -->
+            </div>
           </div>
         </div>
       </section>
