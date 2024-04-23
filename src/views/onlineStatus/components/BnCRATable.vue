@@ -1,11 +1,12 @@
 <!--
- * @Description: 
+ * @Description:
  * @Author: zyg0121 zhouyiguo2012@qq.com
  * @Date: 2023-08-20
  * @LastEditors: BG7ZAG bg7zag@qq.com
  * @LastEditTime: 2023-08-31
 -->
 <script lang="tsx" setup>
+import { DoubleLeft } from '@icon-park/vue-next'
 import { ElTooltip } from 'element-plus'
 
 import BnCRAIcon from '@/components/BnCRATable/BnCRAIcon.vue'

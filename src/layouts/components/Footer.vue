@@ -1,10 +1,4 @@
-<!--
- * @Description: 底部
- * @Author: BG7ZAG bg7zag@qq.com
- * @Date: 2023-08-11
- * @LastEditors: BG7ZAG bg7zag@qq.com
- * @LastEditTime: 2023-09-01
--->
+<!-- 底部 -->
 <script lang="ts" setup>
 import { useRouter } from 'vue-router'
 
@@ -28,7 +22,7 @@ const goto = (path: string) => {
         <img
           alt="ecommerce"
           class="w-20 h-20 object-cover rounded"
-          src="https://ham-img.oss-cn-shanghai.aliyuncs.com/crac/WechatIMG1607.png?x-oss-process=style/low_quality"
+          src="https://storage.hamcq.cn/crac/WechatIMG1607.png?x-oss-process=style/low_quality"
         />
       </a>
 
