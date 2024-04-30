@@ -1,10 +1,4 @@
-<!--
- * @Description: 每年赞助商
- * @Author: BG7ZAG bg7zag@gmail.com
- * @Date: 2023-08-27
- * @LastEditors: BG7ZAG bg7zag@qq.com
- * @LastEditTime: 2023-08-31
--->
+<!--每年赞助商-->
 <script lang="ts" setup>
 import { ElCard } from 'element-plus'
 
@@ -15,7 +9,17 @@ defineOptions({ name: 'AcknowledgementItem' })
 interface Props {
   formData: {
     year: number
-    list: { name: string; url: string }[]
+    list: {
+      name: string
+      url?: string
+      /** 是否弹窗 */
+      popup?: {
+        /** 弹窗内容 */
+        text?: string
+        /** 弹窗图片 */
+        img?: string
+      }
+    }[]
   }
 }
 
@@ -42,9 +46,19 @@ const onClick = (item: Props['formData']['list'][0]) => {
       </h2>
       <ul class="grid acknowledgement-list">
         <li class="leading-relaxed" v-for="item in formData.list" :key="item.name">
-          <ElCard class="cursor-pointer" shadow="hover" @click="onClick(item)">{{
-            item.name
-          }}</ElCard>
+          <el-popover v-if="item.popup" placement="top" :width="230" trigger="hover" effect="dark">
+            <template #reference>
+              <ElCard class="cursor-pointer" shadow="hover" @click="onClick(item)">
+                {{ item.name }}
+              </ElCard>
+            </template>
+            <el-image v-if="item.popup?.img" :src="item.popup?.img"></el-image>
+            <span v-else>{{ item.popup?.text ?? item.name }}</span>
+          </el-popover>
+
+          <ElCard v-else class="cursor-pointer" shadow="hover" @click="onClick(item)">
+            {{ item.name }}
+          </ElCard>
         </li>
       </ul>
     </div>

@@ -88,7 +88,7 @@ const localConfig = computed(() => {
         <img
           class="object-cover object-center rounded"
           alt="hero"
-          :src="config.cover || 'https://api.hamcq.cn/img/2023.svg'"
+          :src="config.cover || '/img/2023.svg'"
         />
       </div>
     </div>
