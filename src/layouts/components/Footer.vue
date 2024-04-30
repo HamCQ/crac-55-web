@@ -22,14 +22,14 @@ const goto = (path: string) => {
         <img
           alt="ecommerce"
           class="w-20 h-20 object-cover rounded"
-          src="https://storage.hamcq.cn/crac/WechatIMG1607.png?x-oss-process=style/low_quality"
+          src="https://crac.hamcq.cn/img/WechatIMG1607.jpg"
         />
       </a>
 
       <span>
         ©
         <a class="cursor-pointer" href="http://www.crac.org.cn/" target="_blank"
-          >{{ year }} CRAC
+          >2023-{{ year }} CRAC
         </a>
       </span>
 

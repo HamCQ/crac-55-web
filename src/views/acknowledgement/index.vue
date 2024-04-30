@@ -1,15 +1,72 @@
-<!--
- * @Description: 赞助鸣谢
- * @Author: BG7ZAG bg7zag@gmail.com
- * @Date: 2023-08-27
- * @LastEditors: BG7ZAG bg7zag@qq.com
- * @LastEditTime: 2023-08-31
--->
+<!--赞助鸣谢-->
 <script lang="ts" setup>
 import Item from './components/Item.vue'
 defineOptions({ name: 'AcknowledgementPage' })
+type AcknowledgementListType = {
+  year: number
+  list: {
+    name: string
+    url?: string
+    /** 是否弹窗 */
+    popup?: {
+      /** 弹窗内容 */
+      text?: string
+      /** 弹窗图片 */
+      img?: string
+    }
+  }[]
+}[]
 
-const acknowledgementList = reactive([
+const acknowledgementList = reactive<AcknowledgementListType>([
+  {
+    year: 2024,
+    list: [
+      {
+        name: '八重洲电子设备科技(上海)有限公司',
+        url: 'http://www.yaesu.com.cn/'
+      },
+      {
+        name: '深圳市业余无线电协会',
+        popup: {
+          text: '公众号：深圳市业余无线电协会'
+        }
+      },
+      {
+        name: '天津市无线电协会',
+        url: 'http://www.tjara.org/'
+      },
+      {
+        name: '四川省无线电协会',
+        url: 'http://www.scraa.org.cn/'
+      },
+      {
+        name: '西安无线电通信学会',
+        popup: {
+          text: '公众号：西安无线电通信学会'
+        }
+      },
+      {
+        name: 'FlexRadio',
+        url: 'https://www.flexradio.com/'
+      },
+      {
+        name: '哈罗CQ火腿社区',
+        url: 'https://www.hellocq.net/forum/index.php'
+      },
+      {
+        name: 'HamCQ社区',
+        url: 'https://forum.hamcq.cn'
+      },
+      {
+        name: '北京世纪金宇通讯设备有限公司',
+        url: 'http://sjjywxd.com/index.html'
+      },
+      {
+        name: '重庆国赫电子科技有限公司',
+        url: 'https://www.guohedz.com'
+      }
+    ]
+  },
   {
     year: 2023,
     list: [
