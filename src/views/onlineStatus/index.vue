@@ -75,18 +75,17 @@ const options = reactive<{
   }
 })
 
-const optionsRefs = toRefs(options)
-
 watchEffect(() => {
   if (Array.isArray(slotRes.value)) {
     slotRes.value.forEach((n) => {
       if (n.callsign_station) {
-        optionsRefs[n.callsign_station].value.value = n
+        options[n.callsign_station].value = n
       }
     })
 
-    optionsRefs.all.value = {
-      value: slotRes.value.map((n) => n.score).reduce((a, b) => a + b)
+    const totalList = slotRes.value.map((n: { score: any }) => n.score)
+    options.all.value = {
+      score: totalList?.length ? totalList.reduce((a: any, b: any) => a + b) : 0
     } as any
   }
 })
@@ -191,15 +190,8 @@ const intervalOptions = computed(() => [
             @click="() => (select = key as string)"
           >
             <span>{{
-              `${key == 'all' ? $t('home.bncra.all') : item.name}(${
-                key == 'all'
-                  ? item.value instanceof Number
-                    ? item.value
-                    : 0
-                  : item.value?.score ?? 0
-              })`
+              `${key == 'all' ? $t('home.bncra.all') : item.name}(${item.value?.score ?? 0})`
             }}</span>
-            <!-- <span> {{ item }}</span>  -->
           </li>
         </ul>
 
