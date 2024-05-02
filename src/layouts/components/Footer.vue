@@ -29,7 +29,7 @@ const goto = (path: string) => {
       <span>
         ©
         <a class="cursor-pointer" href="http://www.crac.org.cn/" target="_blank"
-          >2023-{{ year }} CRAC
+          >2022-{{ year }} CRAC
         </a>
       </span>
 
