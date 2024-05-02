@@ -47,7 +47,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/v1': {
-        target: 'https://dev.hamcq.cn/v1',
+        target: 'https://crac.hamcq.cn/v1',
         //target: 'http://127.0.0.1:4523/m1/3178384-0-default/v1',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/v1/, '')

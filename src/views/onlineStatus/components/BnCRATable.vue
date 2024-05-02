@@ -1,10 +1,4 @@
-<!--
- * @Description:
- * @Author: zyg0121 zhouyiguo2012@qq.com
- * @Date: 2023-08-20
- * @LastEditors: BG7ZAG bg7zag@qq.com
- * @LastEditTime: 2023-08-31
--->
+<!-- 在线状态 -->
 <script lang="tsx" setup>
 import { DoubleLeft } from '@icon-park/vue-next'
 import { ElTooltip } from 'element-plus'
@@ -24,23 +18,22 @@ const GetHeartDom = (_props: any) => {
   const item = (props.formData as any)?.[_props.mode]?.[_props.band]
   if (!item) return null
 
-  const QsoList = item.map((n: any) => (
-    <div>
-      {n.callsign} {n.time}
-    </div>
-  ))
-  return (
+  return item.callsign ? (
     <ElTooltip
       class="box-item text-center"
       effect="dark"
       placement="bottom"
       v-slots={{
-        content: () => QsoList
+        content: () => (
+          <div>
+            {item.callsign} {item.time}
+          </div>
+        )
       }}
     >
       <BnCRAIcon />
     </ElTooltip>
-  )
+  ) : null
 }
 
 const bands = ['160M', '80M', '40M', '30M', '20M', '17M', '15M', '12M', '10M', '6M']

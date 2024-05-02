@@ -1,13 +1,7 @@
-<!--
- * @Description: 总部电台上线状态
- * @Author: BG7ZAG bg7zag@qq.com
- * @Date: 2023-08-11
- * @LastEditors: BG7ZAG bg7zag@gmail.com
- * @LastEditTime: 2023-08-31
--->
+<!--总部电台上线状态-->
 <script lang="ts" setup>
 defineOptions({ name: 'OnlineStatus' })
-import { useIntervalFn, useTimeoutFn } from '@vueuse/shared'
+import { useTimeoutFn } from '@vueuse/shared'
 import { ElOption, ElSelect } from 'element-plus'
 import { onMounted, onUnmounted, ref, watch } from 'vue'
 import { toRefs } from 'vue'
@@ -15,7 +9,6 @@ import { useI18n } from 'vue-i18n'
 
 import { slot } from '@/api/55/slot'
 
-//import BnCRATableVue from '@/components/BnCRATable/BnCRATable.vue'
 import BnCRATableVue from './components/BnCRATable.vue'
 
 const slotRes = ref<Slot55V1Types.IResponse>({} as Slot55V1Types.IResponse)
@@ -167,7 +160,12 @@ const intervalOptions = computed(() => [
       <label for="refreshInterval" class="text-sm text-gray-500">{{
         $t('onlineSlot.refrash')
       }}</label>
-      <ElSelect v-model="selectedInterval" id="refreshInterval" size="large">
+      <ElSelect
+        v-model="selectedInterval"
+        style="max-width: 350px"
+        id="refreshInterval"
+        size="large"
+      >
         <ElOption
           v-for="item in intervalOptions"
           :key="item.value"
