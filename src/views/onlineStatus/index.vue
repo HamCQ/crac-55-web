@@ -202,11 +202,7 @@ const intervalOptions = computed(() => [
               v-for="(item, key) in options"
               :key="key"
               :label="`${key == 'all' ? $t('home.bncra.all') : item.name}(${
-                key == 'all'
-                  ? item.value instanceof Number
-                    ? item.value
-                    : 0
-                  : item.value?.score ?? 0
+                item.value?.score ?? 0
               })`"
               :value="key"
             />
