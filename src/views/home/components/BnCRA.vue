@@ -10,6 +10,7 @@ import { ElOption, ElSelect } from 'element-plus'
 
 import BnCRATableVue from '@/components/BnCRATable/BnCRATable.vue'
 import { useHomeStore } from '@/store/home'
+import SatTable from './SatTable.vue'
 defineOptions({ name: 'BnCRA' })
 
 const { searchData } = useHomeStore()!
@@ -91,6 +92,7 @@ const showList = computed(() => {
 <template>
   <section class="body-font bn-cra">
     <BnCRATableVue :formData="searchData.bncra" />
+    <SatTable :formData="searchData.sat" />
 
     <div class="rounded mx-auto mt-4 py-3 bn-cra-nav">
       <!-- Tabs -->

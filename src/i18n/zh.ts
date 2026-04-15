@@ -47,6 +47,9 @@ export default {
     points: '分',
     bncra: {
       all: '全部'
+    },
+    sat: {
+      title: '业余卫星'
     }
   },
 

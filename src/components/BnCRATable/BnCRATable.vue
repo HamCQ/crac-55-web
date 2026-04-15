@@ -53,10 +53,10 @@ const bands = ['160M', '80M', '40M', '30M', '20M', '17M', '15M', '12M', '10M', '
         <table class="text-center">
           <thead class="bg-gray-50">
             <tr>
-              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4"></th>
+              <th scope="col" class="text-sm font-medium text-gray-900 px-4 py-3"></th>
               <th
                 scope="col"
-                class="text-sm font-medium text-gray-900 px-6 py-4"
+                class="text-sm font-medium text-gray-900 px-4 py-3"
                 v-for="i in bands"
                 :key="i"
               >
@@ -66,10 +66,10 @@ const bands = ['160M', '80M', '40M', '30M', '20M', '17M', '15M', '12M', '10M', '
           </thead>
           <tbody>
             <tr class="bg-white border-b">
-              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">PHONE</td>
+              <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">PHONE</td>
               <td
                 :class="[
-                  'px-6 py-4 whitespace-nowrap text-sm font-medium ',
+                  'px-4 py-3 whitespace-nowrap text-sm font-medium ',
                   i === '30M' ? 'bg-gray-50 rounded-sm' : 'text-gray-900'
                 ]"
                 v-for="i in bands"
@@ -79,9 +79,9 @@ const bands = ['160M', '80M', '40M', '30M', '20M', '17M', '15M', '12M', '10M', '
               </td>
             </tr>
             <tr class="bg-white border-b">
-              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">CW</td>
+              <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">CW</td>
               <td
-                :class="['px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900']"
+                :class="['px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900']"
                 v-for="i in bands"
                 :key="i"
               >
@@ -89,9 +89,9 @@ const bands = ['160M', '80M', '40M', '30M', '20M', '17M', '15M', '12M', '10M', '
               </td>
             </tr>
             <tr class="bg-white border-b">
-              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">DIGI</td>
+              <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">DIGI</td>
               <td
-                :class="['px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900']"
+                :class="['px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900']"
                 v-for="i in bands"
                 :key="i"
               >
@@ -115,6 +115,10 @@ const bands = ['160M', '80M', '40M', '30M', '20M', '17M', '15M', '12M', '10M', '
 :deep(.el-tooltip__trigger) {
   display: flex;
   justify-content: center;
+}
+
+.bncra-table-block {
+  width: fit-content;
 }
 
 .bncra-tips {

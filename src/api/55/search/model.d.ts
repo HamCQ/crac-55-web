@@ -27,6 +27,29 @@ declare namespace Search55V1Types {
       diff_cra: number
       is_cn: boolean
     }
+    sat: SatItem
+  }
+
+  type SatBxcra = {
+    b0cra: string | null
+    b1cra: string | null
+    b2cra: string | null
+    b3cra: string | null
+    b4cra: string | null
+    b5cra: string | null
+    b6cra: string | null
+    b7cra: string | null
+    b8cra: string | null
+    b9cra: string | null
+  }
+
+  export interface SatItem {
+    callsign_station: string
+    score: number
+    ao_123: SatBxcra
+    so_50: SatBxcra
+    iss: SatBxcra
+    rs_44: SatBxcra
   }
 
   type BAND = '6M' | '10M' | '12M' | '15M' | '17M' | '20M' | '30M' | '40M' | '80M' | '160M'

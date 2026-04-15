@@ -45,6 +45,9 @@ export default {
     points: 'Points',
     bncra: {
       all: 'All'
+    },
+    sat: {
+      title: 'Amateur Satellite'
     }
   },
 
