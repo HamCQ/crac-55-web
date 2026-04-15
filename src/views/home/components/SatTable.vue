@@ -43,12 +43,12 @@ const satellites: { label: string; key: keyof Omit<Search55V1Types.SatItem, 'cal
         <table class="text-center">
           <thead class="bg-gray-50">
             <tr>
-              <th scope="col" class="text-sm font-medium text-gray-900 px-3 py-3"></th>
+              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4"></th>
               <th
                 v-for="key in bxcraKeys"
                 :key="key"
                 scope="col"
-                class="text-sm font-medium text-gray-900 px-2 py-3"
+                class="text-sm font-medium text-gray-900 px-4 py-4"
               >
                 {{ key.toUpperCase() }}
               </th>
@@ -60,13 +60,13 @@ const satellites: { label: string; key: keyof Omit<Search55V1Types.SatItem, 'cal
               :key="sat.key"
               class="bg-white border-b"
             >
-              <td class="px-3 py-3 whitespace-nowrap text-sm font-medium text-gray-900">
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                 {{ sat.label }}
               </td>
               <td
                 v-for="bxcra in bxcraKeys"
                 :key="bxcra"
-                class="px-2 py-3 whitespace-nowrap text-sm font-medium text-gray-900"
+                class="px-4 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
               >
                 <BnCRAIcon v-if="formData?.[sat.key]?.[bxcra] != null" />
               </td>
