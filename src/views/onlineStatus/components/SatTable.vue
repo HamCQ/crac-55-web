@@ -72,10 +72,10 @@ const formatFreq = (freq: number | null) => {
         <table class="text-center">
           <thead class="bg-gray-50">
             <tr>
-              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4"></th>
+              <th scope="col" class="text-sm font-medium text-gray-900 px-4 py-3"></th>
               <th
                 scope="col"
-                class="text-sm font-medium text-gray-900 px-6 py-4"
+                class="text-sm font-medium text-gray-900 px-4 py-3"
                 v-for="b in bncraList"
                 :key="b"
               >
@@ -85,11 +85,11 @@ const formatFreq = (freq: number | null) => {
           </thead>
           <tbody>
             <tr v-for="sat in satList" :key="sat" class="bg-white border-b">
-              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+              <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">
                 {{ sat }}
               </td>
               <td
-                class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+                class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900"
                 v-for="b in bncraList"
                 :key="b"
               >

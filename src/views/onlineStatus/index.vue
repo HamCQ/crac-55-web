@@ -178,10 +178,10 @@ const intervalOptions = computed(() => [
       </ElSelect>
     </div>
   </div>
-  <SatTableVue :satData="satData" />
   <div class="online-status">
     <section class="body-font bn-cra">
       <div class="rounded mx-auto mt-4 py-3 bn-cra-nav">
+        <SatTableVue :satData="satData" />
         <!-- Tabs -->
         <ul id="tabs" class="flex justify-center nav nav-pills md:flex-row list-none pl-0 mb-4">
           <li
