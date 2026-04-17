@@ -7,15 +7,18 @@ import { onMounted, onUnmounted, ref, watch } from 'vue'
 import { toRefs } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import { slot } from '@/api/55/slot'
+import { slot, slotSat } from '@/api/55/slot'
 
 import BnCRATableVue from './components/BnCRATable.vue'
+import SatTableVue from './components/SatTable.vue'
 
 const slotRes = ref<Slot55V1Types.IResponse>({} as Slot55V1Types.IResponse)
+const satData = ref<SlotSatTypes.IResponse>({})
 
 const getData = async () => {
-  const res = await slot()
+  const [res, satRes] = await Promise.all([slot(), slotSat()])
   slotRes.value = res
+  satData.value = satRes
 }
 
 onMounted(() => {
@@ -175,6 +178,7 @@ const intervalOptions = computed(() => [
       </ElSelect>
     </div>
   </div>
+  <SatTableVue :satData="satData" />
   <div class="online-status">
     <section class="body-font bn-cra">
       <div class="rounded mx-auto mt-4 py-3 bn-cra-nav">

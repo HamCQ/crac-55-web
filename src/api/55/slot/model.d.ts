@@ -29,3 +29,17 @@ declare namespace Slot55V1Types {
     time: string
   }
 }
+
+declare namespace SlotSatTypes {
+  export type IResponse = {
+    [satellite: string]: ISatEntry[]
+  }
+
+  export interface ISatEntry {
+    id: number
+    bncra: string
+    callsign: string
+    frequency: number | null
+    time: string
+  }
+}

@@ -14,3 +14,11 @@ import request from '@/api/request'
 export const slot = () => {
   return request.get<Slot55V1Types.IResponse>('/55/slot')
 }
+
+/**
+ * 获取业余卫星状态
+ * @returns Promise<SlotSatTypes.IResponse>
+ */
+export const slotSat = () => {
+  return request.get<SlotSatTypes.IResponse>('/55/slot/sat')
+}
