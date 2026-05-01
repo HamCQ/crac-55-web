@@ -18,7 +18,7 @@ const homeStore = useHomeStore()!
 
 defineOptions({ name: 'HomeAward' })
 
-const { searchData, searchQuery, awardData } = useHomeStore()!
+const { searchData, awardData } = useHomeStore()!
 const { t } = useI18n()
 
 const awardMap = computed<Record<string, string>>(() => ({

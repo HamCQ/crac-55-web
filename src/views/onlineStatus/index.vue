@@ -4,7 +4,6 @@ defineOptions({ name: 'OnlineStatus' })
 import { useTimeoutFn } from '@vueuse/shared'
 import { ElOption, ElSelect } from 'element-plus'
 import { onMounted, onUnmounted, ref, watch } from 'vue'
-import { toRefs } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import { slot, slotSat } from '@/api/55/slot'

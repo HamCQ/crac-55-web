@@ -7,9 +7,7 @@
  * @LastEditTime: 2023-08-31
  */
 import { createInjectionState } from '@vueuse/shared'
-import { dayjs, ElMessage } from 'element-plus'
 import { ref } from 'vue'
-import { useI18n } from 'vue-i18n'
 import { useRoute } from 'vue-router'
 
 import { award, search } from '@/api/55/search'
@@ -31,7 +29,6 @@ const [useProvideHomeStore, useHomeStore] = createInjectionState(() => {
   // 奖项信息
   const awardData = ref<Award55V1Types.IResponse>({} as Award55V1Types.IResponse)
 
-  const { t } = useI18n()
   const { currentYear } = useConfigState()
 
   watch(currentYear, () => {

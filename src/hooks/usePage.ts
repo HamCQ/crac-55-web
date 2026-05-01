@@ -66,7 +66,7 @@ export const useQueryWithPagination = <T extends object, S>(
   }
 
   // 监听分页变化
-  watch([() => limit.page, () => limit.page_size], ([page, page_size], [_oldPage, oldPageSize]) => {
+  watch([() => limit.page, () => limit.page_size], ([page, page_size], [, oldPageSize]) => {
     if (page_size != oldPageSize) {
       limit.page = 1
       limit.page_size = page_size

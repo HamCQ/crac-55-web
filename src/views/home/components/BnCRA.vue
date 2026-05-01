@@ -10,6 +10,7 @@ import { ElOption, ElSelect } from 'element-plus'
 
 import BnCRATableVue from '@/components/BnCRATable/BnCRATable.vue'
 import { useHomeStore } from '@/store/home'
+
 import SatTable from './SatTable.vue'
 defineOptions({ name: 'BnCRA' })
 

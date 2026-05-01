@@ -30,17 +30,22 @@ declare namespace Search55V1Types {
     sat: SatItem
   }
 
+  type SatBxcraEntry = {
+    oprator: string
+    frequecy: string
+  }
+
   type SatBxcra = {
-    b0cra: string | null
-    b1cra: string | null
-    b2cra: string | null
-    b3cra: string | null
-    b4cra: string | null
-    b5cra: string | null
-    b6cra: string | null
-    b7cra: string | null
-    b8cra: string | null
-    b9cra: string | null
+    b0cra: SatBxcraEntry[] | null
+    b1cra: SatBxcraEntry[] | null
+    b2cra: SatBxcraEntry[] | null
+    b3cra: SatBxcraEntry[] | null
+    b4cra: SatBxcraEntry[] | null
+    b5cra: SatBxcraEntry[] | null
+    b6cra: SatBxcraEntry[] | null
+    b7cra: SatBxcraEntry[] | null
+    b8cra: SatBxcraEntry[] | null
+    b9cra: SatBxcraEntry[] | null
   }
 
   export interface SatItem {

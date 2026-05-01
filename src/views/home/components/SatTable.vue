@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { DoubleLeft } from '@icon-park/vue-next'
+import { ElTooltip } from 'element-plus'
 
 import BnCRAIcon from '@/components/BnCRATable/BnCRAIcon.vue'
 
@@ -68,7 +69,22 @@ const satellites: { label: string; key: keyof Omit<Search55V1Types.SatItem, 'cal
                 :key="bxcra"
                 class="px-4 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
               >
-                <BnCRAIcon v-if="formData?.[sat.key]?.[bxcra] != null" />
+                <ElTooltip
+                  v-if="formData?.[sat.key]?.[bxcra] != null"
+                  class="box-item text-center"
+                  effect="dark"
+                  placement="bottom"
+                >
+                  <template #content>
+                    <div
+                      v-for="(entry, idx) in formData![sat.key]![bxcra]!"
+                      :key="idx"
+                    >
+                      {{ entry.frequecy }} {{ entry.oprator }}
+                    </div>
+                  </template>
+                  <BnCRAIcon />
+                </ElTooltip>
               </td>
             </tr>
           </tbody>

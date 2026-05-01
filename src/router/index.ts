@@ -5,7 +5,6 @@
  * @LastEditors: BG7ZAG bg7zag@gmail.com
  * @LastEditTime: 2023-08-29
  */
-import { useStorage } from '@vueuse/core'
 import { createRouter, createWebHistory } from 'vue-router'
 
 import Layout from '@/layouts/index.vue'
@@ -77,7 +76,7 @@ const router = createRouter({
 /**
  * 路由全局后置钩子
  */
-router.afterEach((to, from) => {
+router.afterEach((to) => {
   const languageCache = getDefaultLang()
 
   let title = to.meta.title
