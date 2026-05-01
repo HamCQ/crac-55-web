@@ -113,8 +113,7 @@ const bands = ['160M', '80M', '40M', '30M', '20M', '17M', '15M', '12M', '10M', '
 
 <style lang="scss" scoped>
 :deep(.el-tooltip__trigger) {
-  display: flex;
-  justify-content: center;
+  display: inline-flex;
 }
 
 .bncra-table-block {

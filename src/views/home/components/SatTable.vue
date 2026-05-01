@@ -101,6 +101,10 @@ const satellites: { label: string; key: keyof Omit<Search55V1Types.SatItem, 'cal
 </template>
 
 <style lang="scss" scoped>
+:deep(.el-tooltip__trigger) {
+  display: inline-flex;
+}
+
 .sat-table-block {
   width: fit-content;
 }

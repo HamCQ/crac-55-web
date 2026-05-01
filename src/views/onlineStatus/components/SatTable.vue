@@ -125,8 +125,7 @@ const formatFreq = (freq: number | null) => {
 
 <style lang="scss" scoped>
 :deep(.el-tooltip__trigger) {
-  display: flex;
-  justify-content: center;
+  display: inline-flex;
 }
 
 .sat-tips {
