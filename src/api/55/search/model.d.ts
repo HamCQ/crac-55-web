@@ -57,7 +57,7 @@ declare namespace Search55V1Types {
     rs_44: SatBxcra
   }
 
-  type BAND = '6M' | '10M' | '12M' | '15M' | '17M' | '20M' | '30M' | '40M' | '80M' | '160M'
+  type BAND = '2M' | '6M' | '10M' | '12M' | '15M' | '17M' | '20M' | '30M' | '40M' | '80M' | '160M'
 
   export interface MODEL {
     [x: BAND]: {

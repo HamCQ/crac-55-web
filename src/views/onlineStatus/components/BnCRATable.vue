@@ -36,7 +36,7 @@ const GetHeartDom = (_props: any) => {
   ) : null
 }
 
-const bands = ['160M', '80M', '40M', '30M', '20M', '17M', '15M', '12M', '10M', '6M']
+const bands = ['160M', '80M', '40M', '30M', '20M', '17M', '15M', '12M', '10M', '6M', '2M']
 </script>
 
 <template>
