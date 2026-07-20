@@ -89,66 +89,44 @@ onBeforeUnmount(() => {
       title=""
       v-model="awardDialogVisible"
       :fullscreen="windowWidth < 992"
-      :width="windowWidth < 992 ? '100%' : '40%'"
+      :width="windowWidth < 992 ? '100%' : '720px'"
+      class="award-dialog"
       center
     >
       <!-- 如果屏幕分辨率低于992px 对话框转为全屏 并修改按钮文字不能换行 -->
       <!-- <span>{{ awardData.img_url }}</span> -->
-      <el-image v-if="awardData?.img_url" :src="awardData.img_url" fit="contain" />
+      <div class="award-dialog-content">
+        <div class="award-image-wrap">
+          <el-image
+            v-if="awardData?.img_url"
+            class="award-image"
+            :src="awardData.img_url"
+            fit="contain"
+          />
+        </div>
 
-      <section class="text-gray-600 body-font">
-        <div class="container px-5 py-8 mx-auto">
-          <div class="flex flex-wrap -m-4 text-center">
-            <div class="p-4 sm:w-1/2 w-1/2">
-              <h2
-                class="title-font font-medium text-3xl text-gray-900"
-                v-if="awardData?.combination"
-              >
-                {{ awardData.combination }}
-              </h2>
-              <p class="leading-relaxed">组合数</p>
-            </div>
-            <div class="p-4 sm:w-1/2 w-1/2">
-              <h2 class="title-font font-medium text-3xl text-gray-900" v-if="awardData?.bncra_num">
-                {{ awardData.bncra_num }}
-              </h2>
-              <p class="leading-relaxed">BnCRA</p>
-            </div>
+        <section class="award-stats">
+          <div class="award-stat-item">
+            <h2 v-if="awardData?.combination">{{ awardData.combination }}</h2>
+            <p>组合数</p>
           </div>
-        </div>
-      </section>
-      <section class="text-gray-600 body-font">
-        <div class="container px-5 py-8 mx-auto">
-          <div class="flex flex-wrap -m-4 text-center">
-            <div class="p-4 w-full">
-              <button
-                class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg whitespace-nowrap"
-              >
-                <a
-                  :href="awardData?.img_url_origin"
-                  target="_blank"
-                  v-if="awardData?.img_url_origin"
-                  >{{ $t('home.award.ImgSave') }}</a
-                >
-              </button>
-            </div>
-            <!-- <div class="p-4 sm:w-1/2 w-1/2">
-              <button
-                class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg whitespace-nowrap"
-              >
-                <a
-                  target="_blank"
-                  :href="`https://api.hamcq.cn/partner/crac/paper/${
-                    searchQuery.year ?? 2023
-                  }?callsign=${searchQuery.callsign}`"
-                >
-                  {{ $t('home.award.Apply') }}</a
-                >
-              </button>
-            </div> -->
+          <div class="award-stat-item">
+            <h2 v-if="awardData?.bncra_num">{{ awardData.bncra_num }}</h2>
+            <p>BnCRA</p>
           </div>
+        </section>
+
+        <div class="award-actions">
+          <a
+            v-if="awardData?.img_url_origin"
+            class="award-save-button"
+            :href="awardData.img_url_origin"
+            target="_blank"
+          >
+            {{ $t('home.award.ImgSave') }}
+          </a>
         </div>
-      </section>
+      </div>
     </el-dialog>
   </p>
 </template>
@@ -161,5 +139,105 @@ onBeforeUnmount(() => {
 .award-down {
   text-decoration: underline;
   cursor: pointer;
+}
+
+:deep(.award-dialog .el-dialog__body) {
+  padding: 16px 24px 28px;
+}
+
+.award-dialog-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.award-image-wrap {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  overflow: hidden;
+}
+
+.award-image {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  max-height: min(68vh, 820px);
+
+  :deep(img) {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    max-height: min(68vh, 820px);
+    object-fit: contain;
+  }
+}
+
+.award-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(120px, 1fr));
+  gap: 24px;
+  width: min(100%, 520px);
+  margin: 28px auto 0;
+  color: #4b5563;
+  text-align: center;
+}
+
+.award-stat-item {
+  h2 {
+    margin: 0;
+    color: #111827;
+    font-size: 36px;
+    font-weight: 500;
+    line-height: 1.15;
+  }
+
+  p {
+    margin: 6px 0 0;
+    line-height: 1.5;
+  }
+}
+
+.award-actions {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 32px;
+}
+
+.award-save-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 160px;
+  height: 44px;
+  padding: 0 24px;
+  border-radius: 6px;
+  background: #6366f1;
+  color: #fff;
+  font-size: 18px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.award-save-button:hover {
+  background: #4f46e5;
+  color: #fff;
+}
+
+@media screen and (max-width: 991px) {
+  :deep(.award-dialog .el-dialog__body) {
+    padding: 12px 16px 24px;
+  }
+
+  .award-image,
+  .award-image :deep(img) {
+    max-height: 62vh;
+  }
+
+  .award-stats {
+    margin-top: 24px;
+  }
 }
 </style>
