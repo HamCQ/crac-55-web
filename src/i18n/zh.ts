@@ -30,11 +30,16 @@ export default {
     searchPlaceholder: '请输入您的呼号',
     searchBtn: '查询日志',
     searchTip: '输入呼号查询可在线获取奖状',
+    awardQueueTip: '奖状非实时生成，需要等待队列处理',
+    awardQueueLen: '当前队列长度：{len}',
     award: {
       awardString: {
         Gold: '金奖',
         Silver: '银奖',
-        Bronze: '铜奖'
+        Bronze: '铜奖',
+        SAT_Gold: '卫星金奖',
+        SAT_Silver: '卫星银奖',
+        SAT_Bronze: '卫星铜奖'
       },
       continent: {
         AS: '亚洲 电台',

@@ -30,6 +30,12 @@ const onSearch = () => {
   homeStore.onSearch({ callsign: homeStore.searchQuery.callsign })
 }
 
+const awardQueueLenText = computed(() => {
+  const len = homeStore.searchData.value?.award_queue_len
+  if (len === undefined || len === null) return ''
+  return t('home.awardQueueLen', { len })
+})
+
 const localConfig = computed(() => {
   let obj = {
     title: config.value?.title,
@@ -81,7 +87,11 @@ const localConfig = computed(() => {
             {{ $t('home.searchBtn') }}
           </button>
         </div>
-        <p class="text-sm mt-2 text-gray-500 mb-8 w-full hs-tip">{{ $t('home.searchTip') }}</p>
+        <p class="text-sm mt-2 text-gray-500 mb-8 w-full hs-tip">
+          <span>{{ $t('home.searchTip') }}</span>
+          <span class="hs-queue-tip">{{ $t('home.awardQueueTip') }}</span>
+          <span v-if="awardQueueLenText" class="hs-queue-len">{{ awardQueueLenText }}</span>
+        </p>
       </div>
 
       <div class="lg:max-w-lg lg:w-full md:w-1/2 search-img">
@@ -98,6 +108,17 @@ const localConfig = computed(() => {
 <style lang="scss" scoped>
 #hero-field {
   margin-right: 20px;
+}
+
+.hs-tip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+}
+
+.hs-queue-tip,
+.hs-queue-len {
+  color: #6b7280;
 }
 /* stylelint-disable-next-line media-feature-range-notation */
 @media screen and (max-width: 1280px) {

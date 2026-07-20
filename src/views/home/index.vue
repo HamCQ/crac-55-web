@@ -17,6 +17,13 @@ defineOptions({ name: 'HomePage' })
 
 const { searchData } = useProvideHomeStore()
 const hasSearch = computed(() => Boolean(searchData.value?.bncra?.callsign_station))
+const awardList = computed(() =>
+  searchData.value?.award_list?.length
+    ? searchData.value.award_list
+    : searchData.value?.award_info?.status
+      ? [searchData.value.award_info]
+      : []
+)
 </script>
 
 <template>
@@ -25,7 +32,7 @@ const hasSearch = computed(() => Boolean(searchData.value?.bncra?.callsign_stati
     <Search />
     <template v-if="hasSearch">
       <!-- 是否获奖 -->
-      <Award v-if="searchData?.award_info?.status" />
+      <Award v-if="awardList.length" :award-list="awardList" />
       <Rank />
       <!-- bncra -->
       <BnCRA />

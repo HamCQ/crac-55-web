@@ -28,11 +28,16 @@ export default {
     searchPlaceholder: 'Please enter your callsign',
     searchBtn: 'Search Logs',
     searchTip: 'Enter callsign to apply award online',
+    awardQueueTip: 'Award images are generated asynchronously and may need queue processing',
+    awardQueueLen: 'Current queue length: {len}',
     award: {
       awardString: {
         Gold: 'Gold',
         Silver: 'Silver',
-        Bronze: 'Bronze'
+        Bronze: 'Bronze',
+        SAT_Gold: 'Satellite Gold',
+        SAT_Silver: 'Satellite Silver',
+        SAT_Bronze: 'Satellite Bronze'
       },
       continent: {
         AS: 'Asia RadioStation',

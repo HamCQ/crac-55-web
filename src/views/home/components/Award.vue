@@ -18,13 +18,20 @@ const homeStore = useHomeStore()!
 
 defineOptions({ name: 'HomeAward' })
 
-const { searchData, awardData } = useHomeStore()!
+const props = defineProps<{
+  awardList: Search55V1Types.AwardInfo[]
+}>()
+
+const { awardData } = useHomeStore()!
 const { t } = useI18n()
 
 const awardMap = computed<Record<string, string>>(() => ({
   Gold: t('home.award.awardString.Gold'),
   Silver: t('home.award.awardString.Silver'),
-  Bronze: t('home.award.awardString.Bronze')
+  Bronze: t('home.award.awardString.Bronze'),
+  SAT_Gold: t('home.award.awardString.SAT_Gold'),
+  SAT_Silver: t('home.award.awardString.SAT_Silver'),
+  SAT_Bronze: t('home.award.awardString.SAT_Bronze')
 }))
 
 const VITE_LOTTIE = import.meta.env.VITE_LOTTIE
@@ -38,17 +45,21 @@ const awardString = computed(
 )
 
 // 获取奖状信息
-const onAward = () => {
-  homeStore.onAward({ callsign: homeStore.searchQuery.callsign })
+const onAward = (awardInfo: Search55V1Types.AwardInfo) => {
+  homeStore.onAward({ callsign: homeStore.searchQuery.callsign, award_type: awardInfo.award_type })
 }
 
 const awardDialogVisible = ref(false)
 
-const clickAwardDialoge = () => {
+const clickAwardDialoge = (awardInfo: Search55V1Types.AwardInfo) => {
   awardDialogVisible.value = true
-  //console.log("打开奖项对话框");
-  onAward()
+  onAward(awardInfo)
 }
+
+const awardLabel = (awardInfo: Search55V1Types.AwardInfo) =>
+  `${awardMap.value[awardInfo.award_string] ?? ''}（${
+    awardInfo.continent === 'AS' ? t('home.award.continent.AS') : t('home.award.continent.OA')
+  }）`
 
 // 监测屏幕大小
 const windowWidth = ref(window.innerWidth)
@@ -67,23 +78,22 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <p class="text-center py-4 mx-auto leading-relaxed text-base text-indigo-900 home-award">
+  <div class="home-award">
     <lottie-player
       :src="awardString"
       background="transparent"
       speed="1.5"
-      style="height: 150px"
+      class="award-badge"
       loop=""
       autoplay=""
     ></lottie-player>
 
-    {{
-      `${awardMap[searchData?.award_info?.award_string] ?? ''}（${
-        searchData?.award_info?.continent === 'AS'
-          ? t('home.award.continent.AS')
-          : t('home.award.continent.OA')
-      }）`
-    }}<a @click="clickAwardDialoge()" class="award-down">{{ t('home.award.download') }}</a>
+    <div class="award-links">
+      <span v-for="item in props.awardList" :key="item.award_type" class="award-link-item">
+        {{ awardLabel(item) }}
+        <a @click="clickAwardDialoge(item)" class="award-down">{{ t('home.award.download') }}</a>
+      </span>
+    </div>
 
     <el-dialog
       title=""
@@ -128,12 +138,41 @@ onBeforeUnmount(() => {
         </div>
       </div>
     </el-dialog>
-  </p>
+  </div>
 </template>
 
 <style scoped lang="scss">
 .dialog-footer button:first-child {
   margin-right: 10px;
+}
+
+.home-award {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 0;
+  color: #312e81;
+  font-size: 16px;
+  line-height: 1.65;
+  text-align: center;
+}
+
+.award-badge {
+  width: 150px;
+  height: 150px;
+}
+
+.award-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px 28px;
+  max-width: min(100%, 760px);
+}
+
+.award-link-item {
+  white-space: nowrap;
 }
 
 .award-down {

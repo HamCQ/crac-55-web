@@ -56,13 +56,13 @@ const [useProvideHomeStore, useHomeStore] = createInjectionState(() => {
   /**
    * 获取奖项信息
    */
-  const onAward = async ({ callsign, year }: Partial<Award55V1Types.IRequest>) => {
+  const onAward = async ({ callsign, year, award_type }: Partial<Award55V1Types.IRequest>) => {
     searchQuery.callsign = callsign ?? ''
     if (year || route.query.year) {
       searchQuery.year = (year || route.query.year) as string
     }
 
-    const res = await award(searchQuery)
+    const res = await award({ ...searchQuery, award_type })
 
     awardData.value = res ?? {}
   }

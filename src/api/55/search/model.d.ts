@@ -13,13 +13,17 @@ declare namespace Search55V1Types {
     callsign: string
   }
 
+  export type AwardInfo = {
+    award_string: string
+    award_type: number
+    continent: string
+    status: boolean
+  }
+
   export type IResponse = {
-    award_info: {
-      award_string: string
-      award_type: number
-      continent: string
-      status: boolean
-    }
+    award_info: AwardInfo
+    award_list?: AwardInfo[]
+    award_queue_len?: number
     bncra: Item
     bxcra: Item[]
     rank_info: {
@@ -81,6 +85,8 @@ declare namespace Award55V1Types {
     callsign: string
     /** 年份 */
     year: string
+    /** 奖项类型 */
+    award_type?: number
   }
 
   export type IResponse = {
