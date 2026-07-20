@@ -77,13 +77,13 @@ const onQuery = async () => {
 
           <div class="logs-title">{{ t('certificate.logs') }} ({{ result.log_total || 0 }})</div>
           <el-table :data="result.logs || []" border max-height="520" class="logs-table">
-            <el-table-column prop="station_callsign" :label="t('certificate.stationCallsign')" min-width="120" />
-            <el-table-column prop="call_obj" :label="t('certificate.callsign')" min-width="110" />
+            <el-table-column prop="call_obj" :label="t('certificate.callObj')" min-width="110" />
             <el-table-column prop="mode" :label="t('certificate.mode')" width="90" />
             <el-table-column prop="band" :label="t('certificate.band')" width="90" />
             <el-table-column prop="qso_date" label="QSO Date" min-width="120" />
             <el-table-column prop="time_on" label="Time On" min-width="100" />
             <el-table-column prop="frequency" :label="t('certificate.frequency')" min-width="100" />
+            <el-table-column prop="station_callsign" :label="t('certificate.stationCallsign')" min-width="120" />
             <el-table-column prop="operator" :label="t('certificate.operator')" min-width="100" />
             <el-table-column :label="t('certificate.satellite')" min-width="120">
               <template #default="{ row }">{{ row.is_sat ? row.sat_name || 'SAT' : '-' }}</template>

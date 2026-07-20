@@ -68,6 +68,7 @@ export default {
     certNum: '证书编号',
     year: '年份',
     callsign: '呼号',
+    callObj: '呼叫对象',
     award: '奖项',
     continent: '大洲',
     bncraNums: 'BNCRA数量',

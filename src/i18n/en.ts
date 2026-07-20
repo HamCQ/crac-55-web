@@ -66,6 +66,7 @@ export default {
     certNum: 'Certificate No.',
     year: 'Year',
     callsign: 'Callsign',
+    callObj: 'Call Object',
     award: 'Award',
     continent: 'Continent',
     bncraNums: 'BNCRA Count',
