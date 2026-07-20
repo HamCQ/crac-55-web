@@ -81,6 +81,12 @@ const menus = computed(() => [
     title: t('layout.header.onTheAir'),
     path: '/onlineStatus'
   },
+  // 证书查询
+  {
+    show: true,
+    title: t('layout.header.certificate'),
+    path: '/certificate'
+  },
   // 历年活动
   // {
   //   show: true,

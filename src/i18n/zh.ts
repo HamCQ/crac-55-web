@@ -15,7 +15,8 @@ export default {
       about: '活动说明',
       onTheAir: '总部电台上线状态',
       cracSite: 'CRAC 站点',
-      archive: '历年活动'
+      archive: '历年活动',
+      certificate: '证书查询',
     },
     footer: {
       contributions: '开发贡献',
@@ -51,6 +52,32 @@ export default {
     sat: {
       title: '业余卫星'
     }
+  },
+
+
+  certificate: {
+    title: '证书编号查询',
+    desc: '输入证书编号校验证书是否有效，并查看对应呼号的通联日志。',
+    placeholder: '请输入证书编号',
+    query: '查询证书',
+    loading: '查询中',
+    valid: '证书有效',
+    invalid: '证书无效',
+    notFound: '未查询到证书信息',
+    invalidHint: '证书记录存在，但当前状态无效或未生成图片',
+    certNum: '证书编号',
+    year: '年份',
+    callsign: '呼号',
+    award: '奖项',
+    continent: '大洲',
+    bncraNums: 'BNCRA数量',
+    logs: '通联日志',
+    stationCallsign: '台站呼号',
+    mode: '模式',
+    band: '频段',
+    frequency: '频率',
+    operator: '值机员',
+    satellite: '卫星'
   },
 
   statistic: {

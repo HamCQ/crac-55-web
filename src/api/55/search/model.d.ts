@@ -94,3 +94,55 @@ declare namespace Award55V1Types {
     combination: number
   }
 }
+
+
+// 证书编号校验
+declare namespace AwardCert55V1Types {
+  export type IRequest = {
+    cert_num: string
+  }
+
+  export type AwardInfo = {
+    id: number
+    cert_num: string
+    year: number
+    callsign: string
+    continent: string
+    type: number
+    award_string: string
+    combination: number
+    bncra_nums: number
+    img_url: string
+    status: number
+    remark: string
+    created_time: number
+    update_time: number
+  }
+
+  export type LogItem = {
+    id: number
+    year: number
+    continent: string
+    country: string
+    call_obj: string
+    mode: string
+    band: string
+    qso_date: string
+    time_on: string
+    time_off: string
+    qso_timestamp: number
+    frequency: string
+    station_callsign: string
+    operator: string
+    is_sat: number
+    sat_name: string
+  }
+
+  export type IResponse = {
+    valid: boolean
+    message: string
+    award: AwardInfo
+    logs: LogItem[]
+    log_total: number
+  }
+}

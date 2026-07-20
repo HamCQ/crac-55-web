@@ -14,7 +14,8 @@ export default {
       about: 'About',
       onTheAir: 'On the Air',
       cracSite: 'CRAC Site',
-      archive: 'Archive'
+      archive: 'Archive',
+      certificate: 'Certificate Query',
     },
     footer: {
       contributions: 'Contributions',
@@ -49,6 +50,32 @@ export default {
     sat: {
       title: 'Amateur Satellite'
     }
+  },
+
+
+  certificate: {
+    title: 'Certificate Query',
+    desc: 'Enter a certificate number to verify it and view the related QSO logs.',
+    placeholder: 'Please enter certificate number',
+    query: 'Query Certificate',
+    loading: 'Searching',
+    valid: 'Certificate valid',
+    invalid: 'Certificate invalid',
+    notFound: 'No certificate found',
+    invalidHint: 'The certificate record exists, but it is not currently valid or has no generated image.',
+    certNum: 'Certificate No.',
+    year: 'Year',
+    callsign: 'Callsign',
+    award: 'Award',
+    continent: 'Continent',
+    bncraNums: 'BNCRA Count',
+    logs: 'QSO Logs',
+    stationCallsign: 'Station Callsign',
+    mode: 'Mode',
+    band: 'Band',
+    frequency: 'Frequency',
+    operator: 'Operator',
+    satellite: 'Satellite'
   },
 
   statistic: {

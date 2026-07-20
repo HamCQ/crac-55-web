@@ -22,3 +22,11 @@ export const search = (data: Search55V1Types.IRequest) => {
 export const award = (data: Award55V1Types.IRequest) => {
   return request.get<Award55V1Types.IResponse>('/55/award', data)
 }
+
+
+/**
+ * 证书编号校验
+ */
+export const awardCert = (data: AwardCert55V1Types.IRequest) => {
+  return request.get<AwardCert55V1Types.IResponse>('/55/award/cert', data)
+}

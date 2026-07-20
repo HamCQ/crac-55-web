@@ -49,6 +49,12 @@ const router = createRouter({
           meta: { title: '申请奖状', titleEn: 'Apply Paper Award' }
         },
         {
+          path: 'certificate',
+          name: 'CertificateQueryPage',
+          component: () => import('../views/certificate/index.vue'),
+          meta: { title: '证书查询', titleEn: 'Certificate Query' }
+        },
+        {
           path: 'ranking',
           name: 'RankingPage',
           component: () => import('../views/ranking/index.vue'),
