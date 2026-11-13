@@ -47,10 +47,14 @@ module.exports = {
           'if',
           'each',
           'include',
-          'mixin'
+          'mixin',
+          'config',
+          'layer'
         ]
       }
     ],
+    // Tailwind v4 的 @import ... layer() 与 @config 位于文件顶部，不再受该规则约束
+    'no-invalid-position-at-import-rule': null,
     'media-feature-range-notation': null
   }
 }
