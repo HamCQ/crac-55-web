@@ -74,7 +74,7 @@ const localConfig = computed(() => {
               :placeholder="$t('home.searchPlaceholder')"
               id="hero-field"
               name="callsign"
-              class="ml-5 w-full bg-gray-100 rounded border bg-opacity-50 border-gray-300 focus:ring-2 focus:ring-purple-200 focus:bg-transparent focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              class="ml-5 w-full bg-gray-100/50 rounded border border-gray-300 focus:ring-2 focus:ring-purple-200 focus:bg-transparent focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               style="height: 40px"
               v-model="homeStore.searchQuery.callsign"
               @keyup.enter="onSearch"

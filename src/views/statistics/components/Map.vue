@@ -99,16 +99,16 @@ const initMap = () => {
 
       // 省份名称标注
       map.value.on('complete', function () {
-        var layer = new AMap.LabelsLayer({
+        const layer = new AMap.LabelsLayer({
           // 开启标注避让，默认为开启，v1.4.15 新增属性
           collision: false,
           // 开启标注淡入动画，默认为开启，v1.4.15 新增属性
           animation: true
         })
-        // @ts-ignore
-        for (var i = 0; i < LabelsData.length; i++) {
-          // @ts-ignore
-          var labelsMarker = new AMap.LabelMarker(LabelsData[i])
+        // @ts-expect-error AMap 类型未覆盖 LabelsData
+        for (let i = 0; i < LabelsData.length; i++) {
+          // @ts-expect-error AMap.LabelMarker 类型未完整声明
+          const labelsMarker = new AMap.LabelMarker(LabelsData[i])
           layer.add(labelsMarker)
         }
         map.value.add(layer)

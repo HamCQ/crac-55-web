@@ -6,7 +6,7 @@ import BnCRAIcon from '@/components/BnCRATable/BnCRAIcon.vue'
 
 defineOptions({ name: 'SatTable' })
 
-const props = defineProps<{
+defineProps<{
   formData: Search55V1Types.SatItem | undefined
 }>()
 
@@ -23,7 +23,10 @@ const bxcraKeys: (keyof Search55V1Types.SatItem['ao_123'])[] = [
   'b9cra'
 ]
 
-const satellites: { label: string; key: keyof Omit<Search55V1Types.SatItem, 'callsign_station' | 'score'> }[] = [
+const satellites: {
+  label: string
+  key: keyof Omit<Search55V1Types.SatItem, 'callsign_station' | 'score'>
+}[] = [
   { label: 'AO-123', key: 'ao_123' },
   { label: 'SO-50', key: 'so_50' },
   { label: 'ISS', key: 'iss' },
@@ -56,11 +59,7 @@ const satellites: { label: string; key: keyof Omit<Search55V1Types.SatItem, 'cal
             </tr>
           </thead>
           <tbody>
-            <tr
-              v-for="sat in satellites"
-              :key="sat.key"
-              class="bg-white border-b"
-            >
+            <tr v-for="sat in satellites" :key="sat.key" class="bg-white border-b">
               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                 {{ sat.label }}
               </td>
@@ -76,10 +75,7 @@ const satellites: { label: string; key: keyof Omit<Search55V1Types.SatItem, 'cal
                   placement="bottom"
                 >
                   <template #content>
-                    <div
-                      v-for="(entry, idx) in formData![sat.key]![bxcra]!"
-                      :key="idx"
-                    >
+                    <div v-for="(entry, idx) in formData![sat.key]![bxcra]!" :key="idx">
                       {{ entry.frequecy }} {{ entry.oprator }}
                     </div>
                   </template>

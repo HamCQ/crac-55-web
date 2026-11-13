@@ -3,6 +3,18 @@ allowBuilds:
   esbuild: true
   vue-demi: true
 
+minimumReleaseAgeExclude:
+  - '@intlify/core-base@11.4.19'
+  - '@intlify/devtools-types@11.4.19'
+  - '@intlify/message-compiler@11.4.19'
+  - '@intlify/shared@11.4.19'
+  - '@vitejs/plugin-vue@6.0.11'
+  - prettier@3.10.1
+  - stylelint-config-recommended-scss@18.0.0
+  - stylelint-config-standard-scss@18.0.0
+  - stylelint-scss@7.5.0
+  - vue-i18n@11.4.19
+
 overrides:
   shell-quote: '^1.8.5'
   'minimatch@>=9.0.0 <9.0.7': '^9.0.7'
@@ -10,7 +22,7 @@ overrides:
   'form-data@>=4.0.0 <4.0.6': '^4.0.6'
   'ws@>=8.0.0 <8.21.0': '^8.21.0'
   'brace-expansion@<2.0.0': '^1.1.18'
-  'brace-expansion@>=2.0.0': '^2.1.4'
+  'brace-expansion@>=2.0.0 <5.0.0': '^2.1.4'
   'js-yaml@>=4.0.0 <4.3.1': '^4.3.1'
   'immutable@>=5.0.0-beta.1 <5.1.8': '^5.1.8'
   'fast-uri@>=3.0.0 <3.1.5': '^3.1.5'

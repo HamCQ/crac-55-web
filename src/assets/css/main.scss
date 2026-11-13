@@ -1,2 +1,10 @@
-@use 'element-plus/dist/index.css';
 @use './base';
+
+/* Tailwind v4 把样式输出在 @layer 内，而未分层的 Element Plus 样式优先级更高，
+   会导致工具类无法覆盖组件样式。这里显式分层并固定顺序：
+   theme -> preflight(base) -> Element Plus -> utilities，保持 v3 的覆盖关系 */
+@config '../../../tailwind.config.ts';
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/preflight.css' layer(base);
+@import 'element-plus/dist/index.css' layer(element-plus);
+@import 'tailwindcss/utilities.css' layer(utilities);

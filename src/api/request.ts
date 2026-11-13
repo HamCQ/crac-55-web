@@ -111,7 +111,7 @@ class RequestHttp {
   ): Promise<T> {
     const { isErr = true, isGetDataDirectly = true, ..._config } = config
     const res = await this.instance.get(url, { params, ...{ ..._config, isErr } })
-    return isGetDataDirectly ? res?.data : res
+    return (isGetDataDirectly ? res?.data : res) as T
   }
 
   async post<T, D = any>(
@@ -125,9 +125,8 @@ class RequestHttp {
     } = {}
   ): Promise<T> {
     const { isErr = true, isGetDataDirectly = true, ..._config } = config
-    // @ts-ignore
-    const res = await this.instance.post(url, data, { ..._config, isErr })
-    return isGetDataDirectly ? res?.data : res
+    const res = await this.instance.post(url, data, { ...{ ..._config, isErr } })
+    return (isGetDataDirectly ? res?.data : res) as T
   }
 }
 

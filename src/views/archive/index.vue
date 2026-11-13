@@ -54,9 +54,7 @@ const goHome = (item: ArchiveType) => {
       <div class="container px-5 py-24 mx-auto flex flex-wrap">
         <div class="flex flex-wrap -m-4 flex-1">
           <div class="p-4 lg:w-1/2 md:w-full" v-for="item in list" :key="item.year">
-            <div
-              class="flex border-2 rounded-lg border-gray-200 border-opacity-50 p-8 sm:flex-row flex-col"
-            >
+            <div class="flex border-2 rounded-lg border-gray-200/50 p-8 sm:flex-row flex-col">
               <div class="flex-grow">
                 <h2 class="text-gray-900 text-lg title-font font-medium mb-3">{{ item.year }}</h2>
                 <p class="leading-relaxed text-base">
